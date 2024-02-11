@@ -3,26 +3,26 @@
 @tailwind utilities;
 
 
-/* start font -> Tajawal */
+/* start font -> candra */
 @font-face {
-  font-family: 'TajawalMedium';
-  src: url('./assets/font/Tajawal-Medium.ttf');
+  font-family: 'candraMedium';
+  src: url('./assets/font/ArbFONTS-LamaSans-Medium.ttf');
   font-weight: 700;
 }
 
 @font-face {
-  font-family: 'TajawalRegular';
-  src: url('./assets/font/Tajawal-Regular.ttf');
+  font-family: 'candraRegular';
+  src: url('./assets/font/ArbFONTS-LamaSans-Regular.ttf');
   font-weight: 500;
 }
 
 @font-face {
-  font-family: 'TajawalBold';
-  src: url('./assets/font/Tajawal-Bold.ttf');
+  font-family: 'candraBold';
+  src: url('./assets/font/ArbFONTS-LamaSans-Bold.ttf');
   font-weight: 900;
 }
 
-/* End font -> Tajawal */
+/* End font -> candra */
 
 /* root */
 :root {
@@ -40,7 +40,7 @@
 
 body {
   margin: 0;
-  font-family: TajawalBold, 'sans-serif';
+  font-family: 'candraBold', 'sans-serif';
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
@@ -64,7 +64,7 @@ textarea {
 
 @layer base {
   * {
-    font-family: 'TajawalBold', sans-serif !important;
+    font-family: 'candraBold', sans-serif !important;
   }
 
   .shadows {
@@ -81,11 +81,11 @@ textarea {
   }
 
   .GlobalTable th {
-    @apply border-b-[1px] ltr:border-r-[1px] rtl:border-l-[1px] bg-lightBlack p-2 text-center text-white ltr:first:!rounded-tl-lg rtl:first:!rounded-tr-lg ltr:last:!rounded-tr-lg rtl:last:!rounded-tl-lg;
+    @apply border-b-[0px] ltr:border-r-[0px] rtl:border-l-[0px] bg-mainColorLight p-2 text-center text-mainBlue ltr:first:!rounded-tl-lg rtl:first:!rounded-tr-lg ltr:last:!rounded-tr-lg rtl:last:!rounded-tl-lg;
   }
 
   .GlobalTable td {
-    @apply border-b-[1px] border-l-[1px] bg-white p-2 text-center text-lightBlack;
+    @apply border-b-[1px] border-l-[0px] bg-white p-2 text-center text-lightBlack;
   }
 
   .subTable th {
@@ -94,6 +94,14 @@ textarea {
 
   .subTable td {
     @apply border-l-[1px] bg-white p-2 text-center text-black;
+  }
+  .primaryButtons
+  {
+    @apply bg-mainColorLight text-mainBlue border-purple-200 border-b-[1px] border-l-[0.2px]  w-14 hover:bg-mainBlue hover:text-white hover:cursor-pointer  rounded p-1 m-auto
+  }
+  .addBtn
+  {
+    @apply relative active:top-[1px] md:w-[100px] cutsom-button-sub hover:cursor-pointer py-2 px-4 font-bold rounded-md w-full bg-mainBlue dark:bg-dark-tertiary dark:!border-dark-borderDark text-white border border-lightBlack   flex items-center justify-center gap-2 
   }
 }
 
@@ -163,7 +171,7 @@ display: none;
   display: none;
   }
 .text-mainBlack {
-  font-family: 'Tajawal', sans-serif !important;
+  font-family: 'candra', sans-serif !important;
   font-weight: bold;
   @apply dark:!text-dark-textWhite;
 }
@@ -1125,7 +1133,7 @@ body[class='dark'] .cutsom-button-sub p {
 
 .cutsom-button-sub::after,
 .cutsom-button-sub::before {
-  @apply !bg-lightBlack;
+  @apply !bg-mainBlue;
 }
 
 body[class='dark'] .cutsom-button-sub::after,

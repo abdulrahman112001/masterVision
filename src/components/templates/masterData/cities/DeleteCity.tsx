@@ -50,3 +50,4 @@ function DeleteCity({ refetch, info }: DeleteCity_TP) {
 }
 
 export default DeleteCity;
+ 

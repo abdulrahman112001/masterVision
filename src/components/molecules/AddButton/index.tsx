@@ -11,7 +11,7 @@ export const AddButton = ({ addLabel, action, className }: AddButton_TP) => {
     <>
       {addLabel && (
         <div
-          className={`relative active:top-[1px] md:w-[200px] cutsom-button-sub hover:cursor-pointer py-2 px-8 font-bold rounded-md w-full bg-mainBlue dark:bg-dark-tertiary dark:!border-dark-borderDark text-white border border-lightBlack   flex items-center justify-center gap-2 ${className}`}
+          className={` addBtn ${className}`}
           onClick={action}
         >
           <Add className='w-5 h-5 text-white dark:text-mainBlue' />
