@@ -44,8 +44,8 @@ export const LoginForm = () => {
   });
 
   const initialValues = {
-    Email: "",
-    Password: "",
+    email: "",
+    password: "",
   };
 
   return (
