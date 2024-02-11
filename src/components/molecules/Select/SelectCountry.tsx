@@ -25,8 +25,10 @@ export default function SelectCountry({ name, label }: SelectCountry_tp) {
     (option: OptionType) => option?.value == values[name]
   );
   return (
-    <div>
+/*     <div className="w-11/12 text-right mt-6">
+ */    <div className="text-right text-xs">
       <Select
+        
         placeholder={`${t("choose country")}`}
         label={label}
         id="optionStatus"

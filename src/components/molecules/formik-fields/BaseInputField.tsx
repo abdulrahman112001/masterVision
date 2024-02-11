@@ -46,7 +46,7 @@ export const BaseInputField = ({
   return (
     <>
       <div
-        className={`${
+        className={`text-right ${
           type == "file" ? "!col-span-2 text-center" : ""
         } ${Style}`}
       >
