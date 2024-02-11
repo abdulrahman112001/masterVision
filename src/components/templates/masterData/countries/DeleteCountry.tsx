@@ -11,7 +11,6 @@ type DeleteCountry_TP = {
 };
 function DeleteCountry({ refetch, info }: DeleteCountry_TP) {
   const [id, setID] = useState("");
-  console.log("🚀 ~ DeleteCountry ~ id:", id);
   const { mutate } = useMutate({
     mutationKey: ["countries"],
     endpoint: `countries/${id}`,

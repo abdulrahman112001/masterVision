@@ -23,11 +23,11 @@ export const LanguageContextProvider = ({
     const { i18n } = useTranslation();
     const currentLang = i18n.language
     const queryClient = useQueryClient()
-    const LoadingOverlay = useLoadingOverlay()
+    // const LoadingOverlay = useLoadingOverlay()
 
     const changeLang = async (language: string) => {
 
-        LoadingOverlay.open()
+        // LoadingOverlay.open()
 
         try {
             const response = await request({
@@ -46,7 +46,7 @@ export const LanguageContextProvider = ({
         } catch (error: any) {
             notify('error', error.response?.data?.error);
         } finally {
-            LoadingOverlay.close()
+            // LoadingOverlay.close()
         }
     }
 
