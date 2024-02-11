@@ -1179,6 +1179,26 @@ body[class='dark'] .cutsom-button-sub::before {
   @apply dark:!text-white dark:!bg-[#2a2a3c];
 }
 
+.Form-container{
+  /* lg-b:!absolute lg-b:!top-0 lg-b:!left-0  lg-b:!m-0 lg-b:!rounded-none */
+  @apply  md:w-5/12 transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all sm:max-w-[70rem] modal-templete-style  ;
+
+}
+.Form-inside-Container{
+  @apply flex flex-col justify-center items-center; 
+
+}
+.topFormInputs{
+  @apply flex  justify-around mt-6 p-2;
+}
+.Form-top-labels{
+  @apply text-right
+}
+.Form-PopUP{
+
+}
+
+
 .ps-menu-button:hover .ps-menu-label {
   @apply dark:!text-white;
 }
@@ -1198,7 +1218,15 @@ body[class='dark'] .cutsom-button-sub::before {
 }
 
 
-
+@media(max-width:767px)
+{
+  .Form-container
+  {
+    width: 85% !important;
+    margin-top: 0px;
+    height: 50% !important;
+  }
+}
 main::-webkit-scrollbar,
 .css-dip3t8::-webkit-scrollbar {
   width: 0.4rem;

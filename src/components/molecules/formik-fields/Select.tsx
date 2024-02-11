@@ -157,7 +157,7 @@ export const SelectComp = ({
 
   return (
     <>
-      <div className='col-span-1'>
+      <div className='col-span-1 '>
         <div className='flex flex-col gap-1'>
           {label && (
             <Label htmlFor={id} className='mb-3 text-sm'>

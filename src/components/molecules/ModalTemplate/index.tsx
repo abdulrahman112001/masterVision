@@ -50,7 +50,7 @@ export const ModalTemplate = ({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-1xl transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all sm:max-w-[70rem] modal-templete-style lg-b:!absolute lg-b:!top-0 lg-b:!left-0 lg-b:!w-full lg-b:!h-full lg-b:!max-w-full lg-b:!m-0 lg-b:!rounded-none ">
+              <Dialog.Panel className="Form-container">
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900 relative"

@@ -54,7 +54,7 @@ export const InnerFormLayout = ({
       <div className={`w-full  ${layoutStyle}`}>
         {title && showpopuptitle && (
           // header
-          <div className="flex justify-center items-center bg-mainBlack dark:bg-dark-primary text-[#fff] rounded-t-[1rem]  lg-b:rounded-none">
+          <div className=" flex justify-center items-center bg-mainBlack dark:bg-dark-primary text-[#fff] rounded-t-[1rem]  lg-b:rounded-none">
             <div className="flex items-center gap-x-2 p-6 font-bold">
               <h2 className="text-xl font-bold">{title}</h2>
             </div>
