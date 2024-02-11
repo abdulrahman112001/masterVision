@@ -81,7 +81,7 @@ textarea {
   }
 
   .GlobalTable th {
-    @apply border-b-[1px] ltr:border-r-[1px] rtl:border-l-[1px] bg-lightBlack p-2 text-center text-white ltr:first:!rounded-tl-lg rtl:first:!rounded-tr-lg ltr:last:!rounded-tr-lg rtl:last:!rounded-tl-lg;
+    @apply border-b-[1px] ltr:border-r-[1px] rtl:border-l-[1px] bg-red-500 p-2 text-center text-white ltr:first:!rounded-tl-lg rtl:first:!rounded-tr-lg ltr:last:!rounded-tr-lg rtl:last:!rounded-tl-lg;
   }
 
   .GlobalTable td {
@@ -1192,12 +1192,9 @@ body[class='dark'] .cutsom-button-sub::before {
 .css-1ip1oky>.ps-menu-button:hover {
   @apply dark:!text-white dark:!bg-[#2a2a3c];
 }
-
 .custom-button-style {
   @apply dark:!border-[#3b3b64] dark:!border-[1px] dark:!bg-mainBlack bg-mainBlack;
 }
-
-
 
 main::-webkit-scrollbar,
 .css-dip3t8::-webkit-scrollbar {
@@ -1225,7 +1222,6 @@ body[class='dark'] .css-g1l71u-option {
 
 .react-datepicker-popper {
   position: relative !important;
-  /* transform: translate3d(0px, 0px, 0px) !important; */
 }
 
 .react-datepicker__tab-loop {

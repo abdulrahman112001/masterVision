@@ -154,7 +154,7 @@ export const Table = <T extends object>({
         {isFetching && <Loading />}
 
         <table id="print-table" className="min-w-full text-center">
-          <thead className="border-b bg-mainBlue dark:!bg-dark-tertiary">
+          <thead className="border-b bg-red-500 dark:!bg-dark-tertiary">
             {table?.getHeaderGroups()?.map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
