@@ -200,9 +200,9 @@ display: none;
   height: 40px !important;
 }
 
-.css-1ip1oky>.ps-menu-button {
+/* .css-1ip1oky>.ps-menu-button {
   padding-right: 30px !important;
-}
+} */
 
 .ps-menu-button span:first-child {
   margin-left: 0;
@@ -263,22 +263,22 @@ body[class='dark'] .ps-menu-button.ps-open .ps-menu-icon {
 }
 
 .ps-menu-button:hover {
-  background-color: #f3f3f3;
-  /* padding: 5px; */
-  /* margin: 0px 17px; */
-  /* border-radius: 9px; */
-}
+  @apply !bg-transparent !text-mainBlue
 
+}
+.ps-menu-button:hover a {
+  @apply  !text-mainBlue
+
+}
 .ps-active {
-  background-color: #f3f3f3;
-  /* padding: 5px; */
-  /* margin: 0px 17px; */
-  /* border-radius: 9px; */
+  /* background-color: #f3f3f3; */
+  @apply !text-mainBlue
+
 }
 
 .ps-menu-button:hover .ps-menu-label {
-  color: black !important;
   font-weight: bolder !important;
+  @apply !text-mainBlue
 }
 
 .css-7onajn.ps-rtl {
@@ -1038,7 +1038,7 @@ input#search::placeholder {
 }
 
 .ps-menuitem-root.ps-active .ps-menu-button.ps-active .ps-menu-icon.ps-active svg {
-  fill: #000;
+  @apply !fill-mainBlue
 }
 
 .ps-menuitem-root .ps-menu-button .ps-menu-icon svg {
@@ -1047,7 +1047,7 @@ input#search::placeholder {
 }
 
 .ps-menuitem-root .ps-menu-button:hover .ps-menu-icon svg {
-  fill: #000;
+  @apply !fill-mainBlue
 }
 
 .box-shadow-style {

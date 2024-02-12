@@ -7,6 +7,7 @@ import { indexTable } from "../../../../utils/helpers";
 import { AllCitiesTable_TP } from "./Types&Validation";
 import UpdateCity from "./UpdateCity";
 import DeleteCity from "./DeleteCity";
+import DropDown from "../../../molecules/DropDown/DropDown";
 
 type RefetchFunction = () => void;
 type SetModalOpenFunction = React.Dispatch<React.SetStateAction<boolean>>;
@@ -49,13 +50,15 @@ export const generateColumns = (
       accessorKey: "actions", // This might be a virtual column not directly mapping to data
       cell: (info) => (
         <div className="flex justify-center">
-          <UpdateCity
-            refetch={refetch}
-            setModel={setIsModalOpen}
-            info={info}
-            setData={setCountryData}
-          />
-          <DeleteCity refetch={refetch} info={info} />
+          <DropDown>
+            <UpdateCity
+              refetch={refetch}
+              setModel={setIsModalOpen}
+              info={info}
+              setData={setCountryData}
+            />
+            <DeleteCity refetch={refetch} info={info} />
+          </DropDown>
         </div>
       ),
     },

@@ -1,5 +1,6 @@
 import { BiHome } from "react-icons/bi";
 import { IconType } from "react-icons/lib";
+import Test from "../components/atoms/icons/sideBar/Test";
 
 export type MenuItem_TP = {
   id: string;
@@ -20,7 +21,7 @@ export const sideBarItems: MenuItem_TP[] = [
 
   {
     id: crypto.randomUUID(),
-    icon: BiHome,
+    icon: Test,
     label: `${"Master Data"}`,
     
     items: [

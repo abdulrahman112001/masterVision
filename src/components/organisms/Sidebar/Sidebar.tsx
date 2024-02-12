@@ -29,7 +29,7 @@ interface SideBarProps {
   handleClickItem: () => void;
 }
 
-const SideBar: React.FC<SideBarProps> = () => {
+const SideBar: React.FC<SideBarProps> = ({collapsed , setCollapsed}) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -47,7 +47,7 @@ const SideBar: React.FC<SideBarProps> = () => {
       window.open(link, "_blank");
     }
   };
-  const [collapsed, setCollapsed] = useState(false);
+  
 
   const generateItem = (Item: any) => {
     if (Item?.heading) {
@@ -103,7 +103,7 @@ const SideBar: React.FC<SideBarProps> = () => {
 
       </div>
         <div
-          className={`absolute z-[9] left-[-15px] bottom-[80px] bg-mainBlack w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
+          className={`absolute z-[9] left-[-15px] bottom-[80px] bg-mainBlue w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
             !collapsed
               ? " flex flex-row items-center "
               : "w-[40px] flex justify-center"
