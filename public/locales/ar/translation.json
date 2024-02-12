@@ -34,6 +34,18 @@
   "Cities":"المدن",
   "Country Name":"اسم الدولة",
   "Edit City":"تعديل المدينة",
+  "City Name":"اسم المدينة",
   "Add City":"اضافة مدينة",
-  "choose country":"اختر الدولة"
+  "choose country":"اختر الدولة",
+  "Currencies":"العملات",
+  "Symbol":"الرمز",
+  "Rate":"معدل",
+  "Add Currency":"اضافة عملة",
+  "Edit Currency":"تعديل العملة",
+  "Areas":"المناطق",
+  "Add Area":"اضافة منطقة",
+  "Edit Area":"تعديل المنطقة",
+  "Departments":"الادارات",
+  "Edit Department":"تعديل الادارة",
+  "Add Department":"اضافة ادارة"
 }

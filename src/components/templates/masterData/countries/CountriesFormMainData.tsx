@@ -10,37 +10,45 @@ function CountriesFormMainData(update: any) {
   return (
     <div>
       <InnerFormLayout
+        customStyle="Form-inside-Container"
         showpopuptitle={true}
         title={
-          Object.entries(update).length
+          Object.entries(update?.update).length
             ? `${t("Edit Country")}`
             : `${t("Add Country")}`
         }
         scroll={true}
       >
-        <BaseInputField
-          id="name.ar"
-          label={`${t("Name Arabic")}`}
-          name="name_ar"
-          type="text"
-          placeholder={`${t("Name Arabic")}`}
-          labelProps={{ className: "mb-1 " }}
-          className="mb-3"
-          required
-        />
+        <div className="Form-PopUP">
+          <div className="topFormInputs gap-2">
+            <BaseInputField
+              id="name.ar"
+              label={`${t("Name Arabic")}`}
+              name="name_ar"
+              type="text"
+              placeholder={`${t("Name Arabic")}`}
+              labelProps={{ className: "mb-1 " }}
+              className=" mb-3"
+              required
+            />
 
-        <BaseInputField
-          id="name.en"
-          label={`${t("Name English")}`}
-          name="name_en"
-          type="text"
-          placeholder={`${t("Name English")}`}
-          labelProps={{ className: "mb-1 " }}
-          className="mb-3"
-          required
-        />
-
-        <div className="flex gap-4  mantine-radio-style flex-col">
+            <BaseInputField
+              id="name.en"
+              label={`${t("Name English")}`}
+              name="name_en"
+              type="text"
+              placeholder={`${t("Name English")}`}
+              labelProps={{ className: "mb-1 " }}
+              className="mb-3"
+              required
+            />
+          </div>
+        </div>
+        <div className="col-span-6 w-full px-2">
+          <h2 className="dark:text-white text-start"> {`${t("Image")}`}</h2>
+          <DropFile name="image" />
+        </div>
+        <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
           <label>{t("Activation Status")}</label>
           <div className="flex gap-5  mantine-radio-style">
             <Radio
@@ -63,10 +71,6 @@ function CountriesFormMainData(update: any) {
               }}
             />
           </div>
-        </div>
-        <div className="col-span-6">
-          <h2 className="dark:text-white"> {`${t("Image")}`}</h2>
-          <DropFile name="image" />
         </div>
       </InnerFormLayout>
     </div>

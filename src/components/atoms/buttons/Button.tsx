@@ -8,7 +8,7 @@ const buttonVars = tv({
   variants: {
     color: {
       primary: "bg-mainBlue",
-      danger: "bg-mainRed",
+      danger: "bg-mainBlue",
       dark: "bg-dark",
     },
     disabled: {
@@ -22,7 +22,7 @@ const buttonVars = tv({
     {
       color: "primary",
       disabled: true,
-      className: "text-mainGreen border-mainGreen border-2",
+      className: "text-mainBlue border-mainGreen border-2",
     },
     {
       color: "danger",

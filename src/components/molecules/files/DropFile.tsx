@@ -53,7 +53,7 @@ export const DropFile = ({ name, setRemoved, isMulti }: DropFileProps_TP) => {
     setRemoved(false);
   };
   return (
-    <div className=" grid grid-cols-4 gap-8 rounded-md bg-white dark:!bg-dark-primary p-3 pr-3 w-full  ">
+    <div className=" grid grid-cols-4 gap-8 rounded-md bg-white dark:!bg-dark-primary py-3 px-1  w-full  ">
       <div className=" col-span-4">
         <Dropzone
           accept={{

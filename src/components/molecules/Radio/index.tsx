@@ -26,7 +26,7 @@ export const Radio = ({
   const isRTL = useIsRTL()
   const marginClass = isRTL ? "ms-2" : "me-2"
   return (
-    <div className="flex items-center justify-center">
+    <div className="flex items-center justify-center px-2">
       <BaseInput
         id={id}
         {...props}

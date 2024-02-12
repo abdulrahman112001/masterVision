@@ -36,6 +36,24 @@ export const sideBarItems: MenuItem_TP[] = [
         label: `${"Cities"}`,
         link: "/masterData/cities",
       },
+      {
+        id: crypto.randomUUID(),
+        icon: BiHome,
+        label: `${"Areas"}`,
+        link: "/masterData/areas",
+      },
+      {
+        id: crypto.randomUUID(),
+        icon: BiHome,
+        label: `${"Currencies"}`,
+        link: "/masterData/currencies",
+      },
+      {
+        id: crypto.randomUUID(),
+        icon: BiHome,
+        label: `${"Departments"}`,
+        link: "/masterData/departments",
+      },
     ],
   },
 ];

@@ -12,7 +12,7 @@ type Activate_TP = {
 };
 function Activate(info: Activate_TP) {
   return info.info.row.original.status == 1 ? (
-    <div className="bg-[#10b981] rounded-md p-1 text-white w-1/2 m-auto">
+    <div className="text-sm font-light hover:font-extrabold primaryButtons">
       {" "}
       {t("Active")}{" "}
     </div>

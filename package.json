@@ -68,6 +68,7 @@
     "sweetalert2": "^11.7.32",
     "tailwind-variants": "^0.1.0",
     "use-react-router-breadcrumbs": "^4.0.1",
+    "yarn": "^1.22.21",
     "yet-another-react-lightbox": "^2.6.1",
     "yup": "^1.0.2"
   },

@@ -62,7 +62,7 @@ function CurrenciesFormMainData(update: any) {
 
         <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
           <label>{t("Activation Status")}</label>
-          <div className="grid grid-cols-2  mantine-radio-style">
+          <div className="flex gap-5  mantine-radio-style">
             <Radio
               checked={values?.status == 1}
               label={`${t("Active")}`}

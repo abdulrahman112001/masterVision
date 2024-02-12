@@ -6,6 +6,9 @@ import { ErrorPage } from "./ErrorPage";
 import { Root } from "./Root";
 import Countries from "../pages/masterData/countries";
 import Cities from "../pages/masterData/cities";
+import Currencies from "../pages/masterData/currencies";
+import Areas from "../pages/masterData/areas";
+import Departments from "../pages/masterData/departments";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -14,10 +17,27 @@ export const AllRoutesProvider = () => {
       <Route path="/" element={<Root />} errorElement={<ErrorPage />}>
         <Route path="*" element={<ErrorPage />} />
         <Route index element={<Home title={t("home")} />} />
-        <Route path="/masterData/countries" element={<Countries title={t("Countries")} />} />
-        <Route path="/masterData/cities" element={<Cities title={t("Cities")} />} />
-
-
+        {/* master Data */}
+        <Route
+          path="/masterData/countries"
+          element={<Countries title={t("Countries")} />}
+        />
+        <Route
+          path="/masterData/cities"
+          element={<Cities title={t("Cities")} />}
+        />
+        <Route
+          path="/masterData/areas"
+          element={<Areas title={t("Areas")} />}
+        />
+        <Route
+          path="/masterData/currencies"
+          element={<Currencies title={t("Currencies")} />}
+        />
+         <Route
+          path="/masterData/departments"
+          element={<Departments title={t("Departments")} />}
+        />
       </Route>
 
       <Route
