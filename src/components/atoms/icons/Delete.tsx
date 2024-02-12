@@ -14,7 +14,7 @@ export const Delete = ({
   return (
     <AiFillDelete
       size={'25'}
-      className={` fill-red-500 cursor-pointer  ${className}`}
+      className={` fill-red-500   cursor-pointer  ${className}`}
       onClick={action}
       {...props}
     />

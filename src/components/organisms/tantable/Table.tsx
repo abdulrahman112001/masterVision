@@ -154,7 +154,7 @@ export const Table = <T extends object>({
         {isFetching && <Loading />}
 
         <table id="print-table" className="min-w-full text-center">
-          <thead className="border-b bg-red-500 dark:!bg-dark-tertiary">
+          <thead className="border-b dark:!bg-dark-tertiary">
             {table?.getHeaderGroups()?.map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
@@ -195,7 +195,7 @@ export const Table = <T extends object>({
                 <tr key={row.id} className="border-b !bg-white">
                   {row?.getVisibleCells()?.map((cell) => (
                     <td
-                      className="whitespace-nowrap px-6 py-4 text-sm font-light text-gray-900 td-col-dark"
+                      className="whitespace-nowrap px-6 py-4 text-sm font-light text-gray-300 td-col-dark first:text-black"
                       key={cell.id}
                       style={{
                         background: !!row.original.is_free_session

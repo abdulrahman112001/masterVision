@@ -5,30 +5,25 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import {
-  AllCitiesTable_TP,
-  initialValue_Tp,
-  validationSchema,
-} from "./Types&Validation";
-import CitiesFormMainData from "./CitiesFormMainData";
+import { AllAreasTable_TP, initialValue_Tp, validationSchema } from "./Types&Validation";
+import AreasFormMainData from "./AreasFormMainData";
 
-type AddCity_TP = {
+
+type AddAreas_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddCity({ refetch, update }: AddCity_TP) {
-  console.log("🚀 ~ AddCity ~ update:", update)
+function AddAreas({ refetch, update }: AddAreas_TP) {
   const initialValues: initialValue_Tp = {
-    image: [],
-    status: +update?.status || 1,
+    status: update?.status ? +update?.status : 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    country_id:update?.country_id ||""
+    city_id: update?.city_id || "",
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities`,
+    mutationKey: ["master-data/areas"],
+    endpoint: `master-data/areas`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -39,8 +34,8 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities/${update?.id}`,
+    mutationKey: ["master-data/areas"],
+    endpoint: `master-data/areas/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -51,7 +46,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllCitiesTable_TP) => {
+  const handleSubmit = (values: AllAreasTable_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
@@ -66,12 +61,6 @@ function AddCity({ refetch, update }: AddCity_TP) {
       mutate(submissionData);
     }
   };
-
-
- 
-
-
-
 
   return (
     <>
@@ -94,7 +83,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
                 </Button>
               }
             >
-              <CitiesFormMainData update={update} />
+              <AreasFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -104,4 +93,4 @@ function AddCity({ refetch, update }: AddCity_TP) {
   );
 }
 
-export default AddCity;
+export default AddAreas;

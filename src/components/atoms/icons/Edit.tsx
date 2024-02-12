@@ -14,7 +14,7 @@ export const Edit = ({
   return (
     <AiFillEdit
       size={'25'}
-      className={`cursor-pointer  ${className}`}
+      className={`cursor-pointer fill-primary ${className}`}
       onClick={action}
       {...props}
     />

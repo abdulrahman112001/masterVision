@@ -1,20 +1,19 @@
 import { t } from "i18next";
-import { Dispatch, SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useMutate } from "../../../../hooks";
 import { notify } from "../../../../utils/toast";
 import { Delete } from "../../../atoms/icons/Delete";
 import showAlert from "../../../molecules/ShowAlert";
 
-type DeleteCity_TP = {
+type DeleteDepartment_TP = {
   refetch: () => void;
   info: any;
 };
-function DeleteCity({ refetch, info }: DeleteCity_TP) {
+function DeleteDepartment({ refetch, info }: DeleteDepartment_TP) {
   const [id, setID] = useState("");
-  console.log("🚀 ~ DeleteCountry ~ id:", id);
   const { mutate } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities/${id}`,
+    mutationKey: ["master-data/departments"],
+    endpoint: `master-data/departments/${id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -49,5 +48,4 @@ function DeleteCity({ refetch, info }: DeleteCity_TP) {
   );
 }
 
-export default DeleteCity;
- 
+export default DeleteDepartment;

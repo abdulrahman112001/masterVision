@@ -5,30 +5,29 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
+import CountriesFormMainData from "./CurrenciesFormMainData";
 import {
-  AllCitiesTable_TP,
+  AllCurrencyTable_TP,
   initialValue_Tp,
   validationSchema,
 } from "./Types&Validation";
-import CitiesFormMainData from "./CitiesFormMainData";
 
-type AddCity_TP = {
+type AddCurrency_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddCity({ refetch, update }: AddCity_TP) {
-  console.log("🚀 ~ AddCity ~ update:", update)
+function AddCurrency({ refetch, update }: AddCurrency_TP) {
   const initialValues: initialValue_Tp = {
-    image: [],
-    status: +update?.status || 1,
+    status: update?.status ? +update?.status : 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    country_id:update?.country_id ||""
+    symbol: update?.symbol || "",
+    rate: update?.rate || "",
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities`,
+    mutationKey: ["master-data/currencies"],
+    endpoint: `master-data/currencies`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -39,8 +38,8 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities/${update?.id}`,
+    mutationKey: ["master-data/currencies"],
+    endpoint: `master-data/currencies/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -51,7 +50,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllCitiesTable_TP) => {
+  const handleSubmit = (values: AllCurrencyTable_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
@@ -66,12 +65,6 @@ function AddCity({ refetch, update }: AddCity_TP) {
       mutate(submissionData);
     }
   };
-
-
- 
-
-
-
 
   return (
     <>
@@ -94,7 +87,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
                 </Button>
               }
             >
-              <CitiesFormMainData update={update} />
+              <CountriesFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -104,4 +97,4 @@ function AddCity({ refetch, update }: AddCity_TP) {
   );
 }
 
-export default AddCity;
+export default AddCurrency;
