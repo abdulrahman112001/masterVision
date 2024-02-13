@@ -170,7 +170,7 @@ div {
 
 .sidebarOne .ps-menuitem-root .ps-menu-button  {
   color: #1BC5BD;
-  background-color: #F3F6F9;
+  /* background-color: #F3F6F9; */
   border-color: transparent;
   padding: 0;
   justify-self: center;
