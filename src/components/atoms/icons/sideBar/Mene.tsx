@@ -1,6 +1,6 @@
 import React from "react";
 
-function Test() {
+function Mene() {
   return (
     <div>
       <svg
@@ -25,4 +25,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Mene;

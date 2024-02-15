@@ -1069,14 +1069,23 @@ input#search::placeholder {
 }
 
 .ps-menuitem-root .ps-menu-button .ps-menu-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
 }
+.active-item-class  .ps-menu-icon svg path{
+@apply fill-mainBlue
+}
+.div-hover:hover rect:not(:first-child)  {
+  @apply fill-mainBlue/* استبدل #اللون الذي تريده بالقيمة الصحيحة، مثل #3498db */
+}
+
+
+
 .sidebarOne .ps-menuitem-root .ps-menu-button .ps-menu-icon svg {
   width: 25px;
   height: 25px;
 }
-.ps-menuitem-root .ps-menu-button:hover .ps-menu-icon svg {
+.ps-menuitem-root .ps-menu-button:hover .ps-menu-icon svg path  {
   @apply !fill-mainBlue
 }
 .css-vj11vy.ps-menu-root{

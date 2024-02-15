@@ -101,7 +101,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
           width="265px"
           collapsedWidth="100px"
         >
-          <div className="flex justify-center py-[3rem]">
+          <div className="flex justify-center pt-[3rem] ">
             <Logo />
           </div>
           <Menu iconShape="square">
@@ -158,7 +158,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
                   {Item.items.map((innerItem) => (
                     <MenuItem
                       key={innerItem.id}
-                      icon={<innerItem.icon size={15} />}
+                      icon={<innerItem.icon size={30} />}
                       active={location?.pathname === Item.link}
                       onClick={(e) => goTo(e, innerItem.link)}
                       className="px-3"

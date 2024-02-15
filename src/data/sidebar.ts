@@ -1,8 +1,10 @@
-import { BiCircle, BiData, BiFlag, BiHome, BiSolidHome } from "react-icons/bi";
+import { BiHome, BiSolidHome } from "react-icons/bi";
+import { BsBuilding, BsDash, BsPerson } from "react-icons/bs";
 import { IconType } from "react-icons/lib";
-import Test from "../components/atoms/icons/sideBar/Test";
-import { BsBuilding, BsDash, BsLine, BsMenuButton, BsMenuButtonFill, BsMenuUp, BsPerson } from "react-icons/bs";
-import { Menu } from "react-pro-sidebar";
+import Test from "../components/atoms/icons/sideBar/Mene";
+import Mene from "../components/atoms/icons/sideBar/Mene";
+import Users from "../components/atoms/icons/sideBar/Users";
+import statistics from "../components/atoms/icons/sideBar/statistics";
 
 export type MenuItem_TP = {
   id: string;
@@ -22,7 +24,7 @@ export type MenuItem_TP = {
 export const sideBarItems: MenuItem_TP[] = [
   {
     id: crypto.randomUUID(),
-    icon: BsBuilding,
+    icon: Mene,
     label: `${"Master Data1"}`,
     items: [
       {
@@ -74,13 +76,15 @@ export const sideBarItems: MenuItem_TP[] = [
   },
   {
     id: crypto.randomUUID(),
-    icon: BsPerson,
+    icon: Users,
+   
     label: `${"Master Data1"}`,
     items: [
       {
         id: crypto.randomUUID(),
         icon: Test,
-        label: `${"Master Data6"}`,
+        heading: `${"Home"}`,
+        label: `${"Master Data"}`,
         items: [
           {
             id: crypto.randomUUID(),
@@ -100,30 +104,21 @@ export const sideBarItems: MenuItem_TP[] = [
             label: `${"Areas"}`,
             link: "/masterData/areas",
           },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Currencies"}`,
-            link: "/masterData/currencies",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Departments"}`,
-            link: "/masterData/departments",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Employees"}`,
-            link: "/masterData/employees",
-          },
+
         ],
       },
+
+    ],
+  },
+  {
+    id: crypto.randomUUID(),
+    icon: statistics,
+    label: `${"Master Data"}`,
+    items: [
       {
         id: crypto.randomUUID(),
         icon: Test,
-        label: `${"Master Data5"}`,
+        label: `${"Master Data"}`,
         items: [
           {
             id: crypto.randomUUID(),
@@ -163,49 +158,7 @@ export const sideBarItems: MenuItem_TP[] = [
           },
         ],
       },
-      {
-        id: crypto.randomUUID(),
-        icon: Test,
-        label: `${"Master Data7"}`,
-        items: [
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Countries"}`,
-            link: "/masterData/countries",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Cities"}`,
-            link: "/masterData/cities",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Areas"}`,
-            link: "/masterData/areas",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Currencies"}`,
-            link: "/masterData/currencies",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Departments"}`,
-            link: "/masterData/departments",
-          },
-          {
-            id: crypto.randomUUID(),
-            icon: BiHome,
-            label: `${"Employees"}`,
-            link: "/masterData/employees",
-          },
-        ],
-      },
+     
     ],
   },
 ];
