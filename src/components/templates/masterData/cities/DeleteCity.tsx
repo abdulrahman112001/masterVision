@@ -38,7 +38,7 @@ function DeleteCity({ refetch, info }: DeleteCity_TP) {
               true,
               "warning",
               () => {
-                mutate({});
+                mutate({}); 
               }
             );
             setID(info?.row?.original?.id);
