@@ -7,6 +7,7 @@ import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
 import { FaBars } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sideBarItems } from "../../../data/sidebar";
+console.log("🚀 ~ sideBarItems:", sideBarItems[0].id);
 import { useIsRTL } from "../../../hooks/useIsRTL";
 import ArrowSideBar_IC from "../../atoms/icons/ArrowSideBar";
 import Logo from "../../atoms/icons/Logo";
@@ -29,7 +30,7 @@ interface SideBarProps {
   handleClickItem: () => void;
 }
 
-const SideBar: React.FC<SideBarProps> = () => {
+const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
   const navigate = useNavigate();
 
   const { t } = useTranslation();
@@ -47,7 +48,8 @@ const SideBar: React.FC<SideBarProps> = () => {
       window.open(link, "_blank");
     }
   };
-  const [collapsed, setCollapsed] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(sideBarItems[0]?.id);
+  console.log("🚀 ~ selectedItem:", selectedItem);
 
   const generateItem = (Item: any) => {
     if (Item?.heading) {
@@ -64,7 +66,7 @@ const SideBar: React.FC<SideBarProps> = () => {
         label={t(Item.label)}
         icon={<Item.icon size={15} />}
       >
-        {/* {Item.items.map((innerItem) => generateItem(innerItem))} */}
+        {Item.items.map((innerItem) => generateItem(innerItem))}
       </SubMenu>
     ) : (
       <>
@@ -87,63 +89,86 @@ const SideBar: React.FC<SideBarProps> = () => {
       </>
     );
   };
-
+  const handleSelectItem = (id) => {
+    setSelectedItem(id);
+  };
   return (
     <div className="flex relative">
       <div className="sidebarOne">
-      <Sidebar rtl={isRTL} collapsed={true} width="265px" collapsedWidth="90px">
-        <div className="my-5 text-center">
-          <Logo/>
-        </div>
-        <Menu iconShape="square">{sideBarItems.map(generateItem)}</Menu>
-        <div className="sidebar_mobile_toggle cursor-pointer">
-          <FaBars className="text-[25px] mx-5 text-mainBlue dark:text-white" />
-        </div>
-      </Sidebar>
-
-      </div>
-        <div
-          className={`absolute z-[9] left-[-15px] bottom-[80px] bg-mainBlack w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
-            !collapsed
-              ? " flex flex-row items-center "
-              : "w-[40px] flex justify-center"
-          } `}
+        <Sidebar
+          rtl={isRTL}
+          collapsed={true}
+          width="265px"
+          collapsedWidth="100px"
         >
-          <ArrowSideBar_IC
-            className={`cursor-pointer transition-ease collapsed-button-sidebar scale-x-[-1]  ${
-              collapsed && "scale-x-[1] text-[#009ef7]"
-            } `}
-            onClick={() => setCollapsed(!collapsed)}
-          />
-        </div>
-
+          <div className="flex justify-center pt-[3rem] ">
+            <Logo />
+          </div>
+          <Menu iconShape="square">
+            {sideBarItems.map((item) => (
+              <MenuItem
+                key={item.id}
+                icon={<item.icon size={30} />}
+                className={selectedItem === item.id ? "active-item-class" : ""}
+                onClick={() => handleSelectItem(item.id)} // تحديث الحالة عند النقر
+              />
+            ))}
+          </Menu>
+        </Sidebar>
+      </div>
+      <div
+        className={`absolute z-[9] left-[-15px] bottom-[80px] bg-mainBlue w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
+          !collapsed
+            ? " flex flex-row items-center "
+            : "w-[40px] flex justify-center"
+        } `}
+      >
+        <ArrowSideBar_IC
+          className={`cursor-pointer transition-ease collapsed-button-sidebar scale-x-[-1]  ${
+            collapsed && "scale-x-[1] text-[#009ef7]"
+          } `}
+          onClick={() => setCollapsed(!collapsed)}
+        />
+      </div>
       <Sidebar
         rtl={isRTL}
         collapsed={collapsed}
         width="265px"
         collapsedWidth="0"
+        className=""
       >
         <Menu>
-          {sideBarItems.map((Item) =>
-            Item.items ? (
-              <SubMenu
-                // defaultOpen={isOpen(Item.id)}
-                className={
-                  location.pathname === Item.link
-                    ? " font-bold text-white"
-                    : "font-bold text-mainBlack"
-                }
-                key={Item.id}
-                label={t(Item.label)}
-                icon={<Item.icon size={15} />}
-                active={location.pathname === Item.link}
-              >
-                {Item.items.map((innerItem) => generateItem(innerItem))}
-              </SubMenu>
-            ) : (
-              generateItem(Item)
-            )
-          )}
+          {sideBarItems
+            .filter((item) => item.id === selectedItem)
+            .flatMap((item) => item.items)
+            .map((Item) => (
+              <>
+                  {Item?.heading && (
+                <div className="mt-[20px] mx-[35px] h-[40px] flex items-center ">
+                    <h1 className="text-[#7E8299] text-[0.9rem]  ">
+                      {t(Item?.heading)}
+                    </h1>
+                </div>
+                  )}
+                <SubMenu
+                  key={Item.id}
+                  label={t(Item.label)}
+                  icon={<Item.icon size={30} />}
+                >
+                  {Item.items.map((innerItem) => (
+                    <MenuItem
+                      key={innerItem.id}
+                      icon={<innerItem.icon size={30} />}
+                      active={location?.pathname === Item.link}
+                      onClick={(e) => goTo(e, innerItem.link)}
+                      className="px-3"
+                    >
+                      {t(innerItem.label)}
+                    </MenuItem>
+                  ))}
+                </SubMenu>
+              </>
+            ))}
         </Menu>
       </Sidebar>
     </div>

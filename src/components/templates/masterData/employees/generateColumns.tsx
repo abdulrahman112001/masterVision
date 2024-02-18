@@ -1,12 +1,12 @@
 import React from "react";
 import { ColumnDef } from "@tanstack/react-table";
 import Activate from "../../../molecules/Activate";
-import UpdateCountry from "./UpdateCountry";
-import DeleteCountry from "./DeleteCountry";
+import UpdateCountry from "./UpdateEmployee";
 import { t } from "i18next";
 import { indexTable } from "../../../../utils/helpers";
-import { AllCountriesTable_TP } from "./Types&Validation";
 import DropDown from "../../../molecules/DropDown/DropDown";
+import { AllEmployeesTable_TP } from "./Types&Validation";
+import DeleteEmployee from "./DeleteEmployee";
 
 type RefetchFunction = () => void;
 type SetModalOpenFunction = React.Dispatch<React.SetStateAction<boolean>>;
@@ -17,7 +17,7 @@ export const generateColumns = (
   refetch: RefetchFunction,
   setIsModalOpen: SetModalOpenFunction,
   setCountryData: SetCountryDataFunction
-): ColumnDef<AllCountriesTable_TP>[] => {
+): ColumnDef<AllEmployeesTable_TP>[] => {
   return [
     {
       header: "#",
@@ -51,7 +51,7 @@ export const generateColumns = (
               info={info}
               setData={setCountryData}
             />
-            <DeleteCountry refetch={refetch} info={info} />
+            <DeleteEmployee refetch={refetch} info={info} />
           </DropDown>
         </div>
       ),

@@ -66,7 +66,6 @@ const NavBar = ({
 
   const { changeLang } = useLanguageContext();
 
-
   const navigate = useNavigate();
 
   const handleLogOut = () => {
@@ -85,13 +84,13 @@ const NavBar = ({
       </div>
 
       <div className="me-2 flex  items-center gap-4 relative">
-        <div className="flex dark-light-mode-style">
+        {/* <div className="flex dark-light-mode-style">
           <DarkModeToggle
             onChange={handleDarkMode}
             checked={isDarkMode}
             size={50}
           />
-        </div>
+        </div> */}
 
         <button
           type="button"
@@ -165,12 +164,9 @@ const NavBar = ({
 
                   <div className="flex flex-col">
                     <div className="font-bold flex items-center text-base">
-                      <span className="text-[14px]">
-                        {" "}
-                        {user?.name}
-                      </span>
+                      <span className="text-[14px]"> {user?.name}</span>
                       <span className="bg-[#43916d] text-[#f5f8fa] rounded-md font-bold text-[0.70rem] px-[0.3rem] mr-2 py-[0.10rem] ml-2">
-                      {t("Admin")}
+                        {t("Admin")}
 
                         {/* {t("Super Admin")} */}
                       </span>

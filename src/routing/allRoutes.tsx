@@ -9,6 +9,7 @@ import Cities from "../pages/masterData/cities";
 import Currencies from "../pages/masterData/currencies";
 import Areas from "../pages/masterData/areas";
 import Departments from "../pages/masterData/departments";
+import Employees from "../pages/masterData/employees";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -37,6 +38,10 @@ export const AllRoutesProvider = () => {
          <Route
           path="/masterData/departments"
           element={<Departments title={t("Departments")} />}
+        />
+          <Route
+          path="/masterData/employees"
+          element={<Employees title={t("Employees")} />}
         />
       </Route>
 

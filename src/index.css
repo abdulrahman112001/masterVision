@@ -163,9 +163,17 @@ div {
 .css-1097eso{
   display: none;
 }
+.sidebarOne .ps-menuitem-root {
+  display: flex;
+  justify-content: center;
+}
 
-.sidebarOne .ps-menu-label {
-display: none;
+.sidebarOne .ps-menuitem-root .ps-menu-button  {
+  color: #1BC5BD;
+  /* background-color: #F3F6F9; */
+  border-color: transparent;
+  padding: 0;
+  justify-self: center;
 }
 .sidebarOne .ps-submenu-expand-icon {
   display: none;
@@ -193,16 +201,16 @@ display: none;
 }
 
 .ps-menu-button {
-  height: 40px !important;
+  height: 45px !important;
 }
 
 .css-1ytr39x>.ps-menu-button {
   height: 40px !important;
 }
 
-.css-1ip1oky>.ps-menu-button {
+/* .css-1ip1oky>.ps-menu-button {
   padding-right: 30px !important;
-}
+} */
 
 .ps-menu-button span:first-child {
   margin-left: 0;
@@ -232,10 +240,7 @@ body[class='dark'] .ps-menu-button:hover .ps-menu-icon svg {
   color: #fff !important;
 }
 
-body[class='dark'] .ps-menu-button.ps-open .ps-menu-icon {
-  fill: #a7aaad !important;
-  color: #a7aaad !important;
-}
+
 
 [dir='rtl'] .main-page {
   right: 325px;
@@ -249,37 +254,65 @@ body[class='dark'] .ps-menu-button.ps-open .ps-menu-icon {
   left: 265px;
 }
 
-.ps-menu-label {
-  color: #a7aaad !important;
-  font-size: 13px !important;
+ .sidebarOne .ps-menu-label {
+  color: #3F4254 !important;
+  font-weight: 400;
+  font-size: 1rem;
+  text-transform: initial;
 }
+.ps-menu-label{
+  font-size: 0.7rem;
+
+}
+.sidebarOne .ps-menu-button{
+  margin: 10px 0;
+
+}
+.active-item-class .ps-menu-button{
+  fill: #1BC5BD !important;
+  background-color: #e7e9ec !important;
+  border-color: transparent !important;
+border-radius: 10px !important;
+padding: 5px !important;
+}
+.active-item-class  .ps-menu-icon{
+  @apply !text-mainBlue
+}
+.sidebarOne .ps-menu-button:hover{
+  background-color: #e7e9ec !important;
+  border-color: transparent !important;
+border-radius: 10px !important;
+padding: 5px !important;
+}
+.ps-menu-button:hover svg {
+  fill: #1BC5BD !important;
+}
+
 
 .ps-active {
   color: #1d2327 !important;
 }
 
 .ps-menu-icon {
-  color: #a7aaad !important;
+  color: #B5B5C3 !important;
+}
+.ps-menu-label.ps-open{
+@apply text-mainBlue
+}
+.ps-menu-icon.ps-open svg{
+  @apply text-mainBlue
 }
 
-.ps-menu-button:hover {
-  background-color: #f3f3f3;
-  /* padding: 5px; */
-  /* margin: 0px 17px; */
-  /* border-radius: 9px; */
+
+
+.ps-menu-button:hover{
+background-color: transparent !important;
 }
 
-.ps-active {
-  background-color: #f3f3f3;
-  /* padding: 5px; */
-  /* margin: 0px 17px; */
-  /* border-radius: 9px; */
+.css-z5rm24{
+  background-color: transparent !important;
 }
 
-.ps-menu-button:hover .ps-menu-label {
-  color: black !important;
-  font-weight: bolder !important;
-}
 
 .css-7onajn.ps-rtl {
   height: 100vh;
@@ -863,9 +896,7 @@ html[dir='rtl'] .login-page .content .label-form {
   display: none;
 }
 
-.ps-menu-button.ps-open {
-  background-color: #f3f3f3;
-}
+
 
 .ps-active,
 .ps-menu-button:hover,
@@ -874,10 +905,6 @@ html[dir='rtl'] .login-page .content .label-form {
   @apply dark:!bg-dark-borderDark;
 }
 
-.ps-menuitem-root.ps-active .ps-menu-button.ps-active:hover .ps-menu-icon,
-.ps-menuitem-root.ps-active .ps-menu-button.ps-active:hover .ps-menu-label {
-  @apply dark:!bg-dark-borderDark;
-}
 
 .ps-menu-button:hover .css-1eki1b2,
 .ps-menu-button:hover .css-1t2hy0d {
@@ -1038,16 +1065,31 @@ input#search::placeholder {
 }
 
 .ps-menuitem-root.ps-active .ps-menu-button.ps-active .ps-menu-icon.ps-active svg {
-  fill: #000;
+  @apply !fill-mainBlue
 }
 
 .ps-menuitem-root .ps-menu-button .ps-menu-icon svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+}
+.active-item-class  .ps-menu-icon svg path{
+@apply fill-mainBlue
+}
+.div-hover:hover rect:not(:first-child)  {
+  @apply fill-mainBlue/* استبدل #اللون الذي تريده بالقيمة الصحيحة، مثل #3498db */
 }
 
-.ps-menuitem-root .ps-menu-button:hover .ps-menu-icon svg {
-  fill: #000;
+
+
+.sidebarOne .ps-menuitem-root .ps-menu-button .ps-menu-icon svg {
+  width: 25px;
+  height: 25px;
+}
+.ps-menuitem-root .ps-menu-button:hover .ps-menu-icon svg path  {
+  @apply !fill-mainBlue
+}
+.css-vj11vy.ps-menu-root{
+  padding: 1.5rem 0.7rem;
 }
 
 .box-shadow-style {
@@ -1184,9 +1226,6 @@ body[class='dark'] .cutsom-button-sub::before {
   @apply dark:!text-white dark:!bg-[#2a2a3c];
 }
 
-.css-1n9b5ie>.ps-menu-button:hover {
-  @apply dark:!text-white dark:!bg-[#2a2a3c];
-}
 
 .Form-container{
   /* lg-b:!absolute lg-b:!top-0 lg-b:!left-0  lg-b:!m-0 lg-b:!rounded-none */
@@ -1208,19 +1247,11 @@ body[class='dark'] .cutsom-button-sub::before {
 }
 
 
-.ps-menu-button:hover .ps-menu-label {
-  @apply dark:!text-white;
-}
-
-.css-8dyhm6>.ps-menu-button:hover {
-  @apply dark:!text-white dark:!bg-[#2a2a3c];
-}
 
 
 
-.css-1ip1oky>.ps-menu-button:hover {
-  @apply dark:!text-white dark:!bg-[#2a2a3c];
-}
+
+
 .custom-button-style {
   @apply dark:!border-[#3b3b64] dark:!border-[1px] dark:!bg-mainBlue bg-mainBlue;
 }
@@ -1244,10 +1275,14 @@ main::-webkit-scrollbar-thumb,
 .css-dip3t8::-webkit-scrollbar-thumb {
   background-color: #3b3b64;
 }
+.css-dip3t8{
+  background-color: white !important;
+  border-color:white !important
+}
 
 main::-webkit-scrollbar-track,
 .css-dip3t8::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
+  background-color: white;
 }
 
 body[class='dark'] [id^='react-select-'][role='listbox'] {

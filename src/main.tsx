@@ -20,7 +20,7 @@ export const queryClient = new QueryClient({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <QueryClientProvider client={queryClient}>
     {/* <LoadingContextProvider> */}
-      {/* <LanguageContextProvider> */}
+      <LanguageContextProvider>
         <BrowserRouter>
           <AuthProvider>
             <HelmetProvider>
@@ -32,7 +32,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             </HelmetProvider>
           </AuthProvider>
         </BrowserRouter>
-      {/* </LanguageContextProvider> */}
+      </LanguageContextProvider>
     {/* </LoadingContextProvider> */}
   </QueryClientProvider>
 );

@@ -5,25 +5,23 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import { AllAreasTable_TP, initialValue_Tp, validationSchema } from "./Types&Validation";
-import AreasFormMainData from "./AreasFormMainData";
+import { AllEmployeesTable_TP, initialValue_Tp, validationSchema } from "./Types&Validation";
+import EmployeesFormMainData from "./EmployeesFormMainData";
 
-
-type AddAreas_TP = {
+type AddEmployees_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddAreas({ refetch, update }: AddAreas_TP) {
+function AddEmployees({ refetch, update }: AddEmployees_TP) {
   const initialValues: initialValue_Tp = {
-    status: update?.status ? +update?.status : 1, 
+    status: update?.status ? +update?.status : 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    city_id: update?.city_id || "",
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/areas"],
-    endpoint: `master-data/areas`,
+    mutationKey: ["master-data/employees"],
+    endpoint: `master-data/employees`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -34,8 +32,8 @@ function AddAreas({ refetch, update }: AddAreas_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/areas"],
-    endpoint: `master-data/areas/${update?.id}`,
+    mutationKey: ["master-data/employees"],
+    endpoint: `master-data/employees/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -46,7 +44,7 @@ function AddAreas({ refetch, update }: AddAreas_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllAreasTable_TP) => {
+  const handleSubmit = (values: AllEmployeesTable_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
@@ -83,7 +81,7 @@ function AddAreas({ refetch, update }: AddAreas_TP) {
                 </Button>
               }
             >
-              <AreasFormMainData update={update} />
+              <EmployeesFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -93,4 +91,4 @@ function AddAreas({ refetch, update }: AddAreas_TP) {
   );
 }
 
-export default AddAreas;
+export default AddEmployees;

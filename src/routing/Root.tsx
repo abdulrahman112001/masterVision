@@ -15,7 +15,7 @@ export const Root = () => {
   const navigate = useNavigate();
   const [showSignupState, setShowSignupState] = useState(false);
   const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
-
+  const [collapsed, setCollapsed] = useState(false);
   const handleClickOutside = () => {
     document.body.removeAttribute("drawer-aside-bar");
     setOpenSide(false);
@@ -49,26 +49,26 @@ export const Root = () => {
           <div className=" ">
             <SideBar
               handleClickItem={handleClickOutside}
-
+              setCollapsed={setCollapsed}
+              collapsed={collapsed}
             />
-       
           </div>
         </OutsideClickHandler>
-        {showOverlay && <Overlay zIndex={1100} />}
+        {/* {showOverlay && <Overlay zIndex={1100} />} */}
         <main
-          className={`col-start-2 col-end-3 row-start-2 row-end-3 overflow-y-scroll h-[100%]  absolute main-page genral-main  ${
-            isSidebarCollapsed && "collapsed-sidebar"
+          className={`col-start-2 col-end-3 row-start-2 row-end-3 overflow-y-scroll h-[100%]  absolute main-page genral-main bg-[#f1f4f7] ${
+            collapsed && "collapsed-sidebar !w-full"
           }`}
         >
-          <nav className="col-start-1 col-end-3 row-start-1 row-end-2 bg-white dark:bg-dark-tertiary dark:text-dark-textWhite">
+          {/* <nav className="col-start-1 col-end-3 row-start-1 row-end-2 bg-white dark:bg-dark-tertiary dark:text-dark-textWhite">
             <NavBar
               setOpenSide={setOpenSide}
               openSide={openSide}
               handleCollapsedSideBar={handleCollapsedSideBar}
               isSidebarCollapsed={isSidebarCollapsed}
             />
-          </nav>
-          <div className="mt-[45px] px-10">
+          </nav> */}
+          <div className="mt-[45px] px-10 mr-10">
             <Outlet />
           </div>
         </main>

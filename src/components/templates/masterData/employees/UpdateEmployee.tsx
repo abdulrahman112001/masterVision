@@ -1,21 +1,18 @@
 import { Dispatch, SetStateAction } from "react";
-import { useMutate } from "../../../../hooks";
-import { notify } from "../../../../utils/toast";
 import { Edit } from "../../../atoms/icons/Edit";
-import { t } from "i18next";
 
-type UpdateCountry_TP = {
+type UpdateEmployee_TP = {
   refetch: () => void;
   setModel: Dispatch<SetStateAction<boolean>>;
   setData: Dispatch<SetStateAction<{}>>;
   info: any;
 };
-function UpdateCountry({
+function UpdateEmployee({
   refetch,
   setModel,
   setData,
   info,
-}: UpdateCountry_TP) {
+}: UpdateEmployee_TP) {
 
   return (
     <div>
@@ -31,4 +28,4 @@ function UpdateCountry({
   );
 }
 
-export default UpdateCountry;
+export default UpdateEmployee;

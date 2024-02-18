@@ -6,6 +6,7 @@ import { t } from "i18next";
 import { indexTable } from "../../../../utils/helpers";
 import { AllCurrencyTable_TP } from "./Types&Validation";
 import DeleteCurrency from "./DeleteCurrency";
+import DropDown from "../../../molecules/DropDown/DropDown";
 
 type RefetchFunction = () => void;
 type SetModalOpenFunction = React.Dispatch<React.SetStateAction<boolean>>;
@@ -53,6 +54,8 @@ export const generateColumns = (
       accessorKey: "actions", // This might be a virtual column not directly mapping to data
       cell: (info) => (
         <div className="flex justify-center">
+          <DropDown>
+
           <UpdateCountry
             refetch={refetch}
             setModel={setIsModalOpen}
@@ -60,6 +63,7 @@ export const generateColumns = (
             setData={setCountryData}
           />
           <DeleteCurrency refetch={refetch} info={info} />
+          </DropDown>
         </div>
       ),
     },
