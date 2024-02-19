@@ -1,13 +1,13 @@
 import { ColumnDef } from "@tanstack/react-table";
-import React from "react";
-import Activate from "../../../molecules/Activate";
 import { t } from "i18next";
+import React from "react";
 import { indexTable } from "../../../../utils/helpers";
+import Activate from "../../../molecules/Activate";
+
 import DropDown from "../../../molecules/DropDown/DropDown";
-import MenuComp from "../../../molecules/Menue/Menu";
-import DeleteCity from "./DeleteCity";
-import { AllCitiesTable_TP } from "./Types&Validation";
-import UpdateCity from "./UpdateCity";
+import { AllBranchesTable_TP } from "./Types&Validation";
+import UpdateBranches from "./UpdateBranches";
+import DeleteBranch from "./DeleteBranch";
 
 type RefetchFunction = () => void;
 type SetModalOpenFunction = React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,7 +18,7 @@ export const generateColumns = (
   refetch: RefetchFunction,
   setIsModalOpen: SetModalOpenFunction,
   setCountryData: SetCountryDataFunction
-): ColumnDef<AllCitiesTable_TP>[] => {
+): ColumnDef<AllBranchesTable_TP>[] => {
   return [
     {
       header: "#",
@@ -26,20 +26,31 @@ export const generateColumns = (
       cell: (info) => <span>{indexTable(info.row.index, page)}</span>,
     },
     {
-      header: `${t("Country Name")}`,
-      accessorKey: "country_name",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("Name Arabic")}`,
+      header: `${t("Name Branch Ar")}`,
       accessorKey: "name_ar",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("Name English")}`,
+      header: `${t("Name Branch En")}`,
       accessorKey: "name_en",
       cell: (info) => info.renderValue(),
     },
+    {
+      header: `${t("area name")}`,
+      accessorKey: "area_name",
+      cell: (info) => info.renderValue(),
+    },
+    {
+      header: `${t("email")}`,
+      accessorKey: "email",
+      cell: (info) => info.renderValue(),
+    },
+    {
+      header: `${t("mobile")}`,
+      accessorKey: "mobile",
+      cell: (info) => info.renderValue(),
+    },
+
     {
       header: `${t("Active")}`,
       accessorKey: "status",
@@ -49,16 +60,15 @@ export const generateColumns = (
       header: `${t("Actions")}`,
       accessorKey: "actions", // This might be a virtual column not directly mapping to data
       cell: (info) => (
-        <div className="flex justify-center ">
-          <MenuComp/>
+        <div className="flex justify-center">
           <DropDown>
-            <UpdateCity
+            <UpdateBranches
               refetch={refetch}
               setModel={setIsModalOpen}
               info={info}
               setData={setCountryData}
             />
-            <DeleteCity refetch={refetch} info={info} />
+            <DeleteBranch refetch={refetch} info={info} />
           </DropDown>
         </div>
       ),

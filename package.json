@@ -13,7 +13,8 @@
   "dependencies": {
     "@emotion/css": "^11.10.6",
     "@emotion/react": "^11.11.1",
-    "@headlessui/react": "^1.7.13",
+    "@headlessui/react": "^1.7.18",
+    "@iconify/icons-heroicons-solid": "^1.2.6",
     "@inovua/reactdatagrid-community": "^5.8.5",
     "@react-pdf-viewer/core": "3.11.0",
     "@react-pdf-viewer/default-layout": "^3.11.0",
@@ -28,6 +29,7 @@
     "dayjs": "^1.11.10",
     "emoji-picker-react": "^4.5.16",
     "formik": "^2.2.9",
+    "heroicons-react": "^1.4.1",
     "i18next": "^22.4.10",
     "i18next-browser-languagedetector": "^7.0.1",
     "i18next-xhr-backend": "^3.2.2",

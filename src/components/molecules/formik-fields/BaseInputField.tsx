@@ -85,7 +85,7 @@ export const BaseInputField = ({
                 id={id}
                 {...props}
                 // value={fieldValue}
-                value={values[name]}
+                value={ props.value || values[name]}
                 error={touched[name] && !!errors[name]}
                 autoComplete="off"
                 onBlur={() => {

@@ -10,6 +10,8 @@ import Currencies from "../pages/masterData/currencies";
 import Areas from "../pages/masterData/areas";
 import Departments from "../pages/masterData/departments";
 import Employees from "../pages/masterData/employees";
+import Clients from "../pages/masterData/clients";
+import Branches from "../pages/masterData/branches";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -35,13 +37,21 @@ export const AllRoutesProvider = () => {
           path="/masterData/currencies"
           element={<Currencies title={t("Currencies")} />}
         />
-         <Route
+        <Route
           path="/masterData/departments"
           element={<Departments title={t("Departments")} />}
         />
-          <Route
+        <Route
           path="/masterData/employees"
           element={<Employees title={t("Employees")} />}
+        />
+        <Route
+          path="/masterData/clients"
+          element={<Clients title={t("Clients")} />}
+        />
+          <Route
+          path="/masterData/branches"
+          element={<Branches title={t("Branches")} />}
         />
       </Route>
 

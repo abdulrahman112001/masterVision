@@ -113,3 +113,17 @@ export function convertTo24Hour(timeString:any) {
   }
   return `${hours.toString().padStart(2, '0')}:${minutes}`;
 }
+
+
+export function convertToDynamicShape(value) {
+  return value.map(item => ({
+    key: {
+      ar: item.key_ar,
+      en: item.key_en,
+    },
+    value: {
+      ar: item.value_ar,
+      en: item.value_en,
+    }
+  }));
+}

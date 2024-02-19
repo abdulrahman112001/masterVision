@@ -1229,7 +1229,7 @@ body[class='dark'] .cutsom-button-sub::before {
 
 .Form-container{
   /* lg-b:!absolute lg-b:!top-0 lg-b:!left-0  lg-b:!m-0 lg-b:!rounded-none */
-  @apply  md:w-5/12 transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all sm:max-w-[70rem] modal-templete-style  ;
+  @apply  md:w-8/12 transform rounded-2xl bg-white text-left align-middle shadow-xl transition-all sm:max-w-[70rem] modal-templete-style  ;
 
 }
 .Form-inside-Container{

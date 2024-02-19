@@ -6,28 +6,30 @@ import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackE
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
 import {
-  AllCitiesTable_TP,
+  AllBranchesTable_TP,
   initialValue_Tp,
   validationSchema,
 } from "./Types&Validation";
-import CitiesFormMainData from "./CitiesFormMainData";
+import BranchesFormMainData from "./BranchesFormMainData";
 
-type AddCity_TP = {
+type AAddBranch_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddCity({ refetch, update }: AddCity_TP) {
+function AddBranch({ refetch, update }: AAddBranch_TP) {
+  console.log("🚀 ~ AddBranch ~ update:", update);
   const initialValues: initialValue_Tp = {
-    image: [],
-    status: +update?.status || 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    country_id: update?.country_id || "",
+    email: update?.email || "",
+    mobile: update?.mobile || "",
+    area_id: update?.area_id || "",
+    status: update?.status ? +update?.status : 1,
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities`,
+    mutationKey: ["master-data/branches"],
+    endpoint: `master-data/branches`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -38,8 +40,8 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/cities"],
-    endpoint: `master-data/cities/${update?.id}`,
+    mutationKey: ["master-data/branches"],
+    endpoint: `master-data/branches/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -50,10 +52,12 @@ function AddCity({ refetch, update }: AddCity_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllCitiesTable_TP) => {
+  const handleSubmit = (values: AllBranchesTable_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
+      user_type: "our_branch",
+      item_id: "1",
     };
     const valuesToSubmit = { ...values };
     delete valuesToSubmit.name_ar;
@@ -65,6 +69,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
       mutate(submissionData);
     }
   };
+
   return (
     <>
       <Formik
@@ -86,7 +91,7 @@ function AddCity({ refetch, update }: AddCity_TP) {
                 </Button>
               }
             >
-              <CitiesFormMainData update={update} />
+              <BranchesFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -96,4 +101,4 @@ function AddCity({ refetch, update }: AddCity_TP) {
   );
 }
 
-export default AddCity;
+export default AddBranch;

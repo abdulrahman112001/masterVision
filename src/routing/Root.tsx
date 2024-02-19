@@ -60,14 +60,14 @@ export const Root = () => {
             collapsed && "collapsed-sidebar !w-full"
           }`}
         >
-          {/* <nav className="col-start-1 col-end-3 row-start-1 row-end-2 bg-white dark:bg-dark-tertiary dark:text-dark-textWhite">
+          <nav className="col-start-1 col-end-3 row-start-1 row-end-2 bg-white dark:bg-dark-tertiary dark:text-dark-textWhite">
             <NavBar
               setOpenSide={setOpenSide}
               openSide={openSide}
               handleCollapsedSideBar={handleCollapsedSideBar}
               isSidebarCollapsed={isSidebarCollapsed}
             />
-          </nav> */}
+          </nav>
           <div className="mt-[45px] px-10 mr-10">
             <Outlet />
           </div>
