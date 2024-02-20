@@ -4,21 +4,20 @@ import React from "react";
 import { indexTable } from "../../../../utils/helpers";
 import Activate from "../../../molecules/Activate";
 import DropDown from "../../../molecules/DropDown/DropDown";
-import DeleteCity from "./DeleteCity";
-import { AllCitiesTable_TP } from "./Types&Validation";
-import UpdateCity from "./UpdateCity";
-import MenuDropDown from "../../../molecules/Menu/MenuDropDown";
+import DeleteAdmin from "./DeleteAdmin";
+import { AllAdminsTable_TP } from "./Types&Validation";
+import UpdateAdmin from "./UpdateAdmin";
 
 type RefetchFunction = () => void;
 type SetModalOpenFunction = React.Dispatch<React.SetStateAction<boolean>>;
-type SetCountryDataFunction = React.Dispatch<React.SetStateAction<any>>; // Adjust 'any' to your specific type
+type setMainDataFunction = React.Dispatch<React.SetStateAction<any>>; // Adjust 'any' to your specific type
 
 export const generateColumns = (
   page: number,
   refetch: RefetchFunction,
   setIsModalOpen: SetModalOpenFunction,
-  setCountryData: SetCountryDataFunction
-): ColumnDef<AllCitiesTable_TP>[] => {
+  setMainData: setMainDataFunction
+): ColumnDef<AllAdminsTable_TP>[] => {
   return [
     {
       header: "#",
@@ -26,18 +25,13 @@ export const generateColumns = (
       cell: (info) => <span>{indexTable(info.row.index, page)}</span>,
     },
     {
-      header: `${t("Country Name")}`,
-      accessorKey: "country_name",
+      header: `${t("Name")}`,
+      accessorKey: "name",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("Name Arabic")}`,
-      accessorKey: "name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("Name English")}`,
-      accessorKey: "name_en",
+      header: `${t("email")}`,
+      accessorKey: "email",
       cell: (info) => info.renderValue(),
     },
     {
@@ -51,14 +45,13 @@ export const generateColumns = (
       cell: (info) => (
         <div className="flex justify-center ">
           <DropDown>
-            <MenuDropDown/>
-            <UpdateCity
+            <UpdateAdmin
               refetch={refetch}
               setModel={setIsModalOpen}
               info={info}
-              setData={setCountryData}
+              setData={setMainData}
             />
-            <DeleteCity refetch={refetch} info={info} />
+            <DeleteAdmin refetch={refetch} info={info} />
           </DropDown>
         </div>
       ),

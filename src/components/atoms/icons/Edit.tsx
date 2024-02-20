@@ -10,13 +10,13 @@ export const Edit = ({ className, action, size, ...props }: EditProps_TP) => {
     <div  onClick={action} className="flex items-center justify-between">
       <div>
         <AiFillEdit
-          size={"25"}
+          size={"20"}
           className={`cursor-pointer fill-primary ${className}`}
          
           {...props}
         />
       </div>
-      <div>{t("Edit")}</div>
+      <div className="text-[14px]">{t("Edit")}</div>
     </div>
   );
 };

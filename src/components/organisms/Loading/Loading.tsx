@@ -17,25 +17,7 @@ export const Loading = ({
   mainTitle,
   subTitle = t('loading').toString(),
 }: LoadingProps_TP) => {
-  /////////// VARIABLES
-  ///
 
-  ///
-  /////////// CUSTOM HOOKS
-  ///
-
-  ///
-  /////////// STATES
-  ///
-
-  ///
-  /////////// SIDE EFFECTS
-  ///
-
-  /////////// FUNCTIONS | EVENTS | IF CASES
-  ///
-
-  ///
   return (
     <div className='z-auto m-auto my-28 flex h-full w-full items-center justify-center absolute z-50 top-[0px] left-0'>
       <div className='z-[1000] h-ful relative flex w-full max-w-sm  flex-col items-center justify-center rounded-lg border border-gray-100 bg-white p-6 shadow-md dark:!border-dark-borderDark dark:bg-gray-800 dark:hover:bg-gray-700'>

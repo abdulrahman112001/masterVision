@@ -1,59 +1,19 @@
+import { t } from "i18next";
 import Cookies from "js-cookie";
-import { useEffect, useState } from "react";
-import DarkModeToggle from "react-dark-mode-toggle";
-import { useTranslation } from "react-i18next";
+import { useState } from "react";
+//@ts-ignore
 import OutsideClickHandler from "react-outside-click-handler";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/global/300-1.jpg";
-import ar from "../../../assets/global/ar.svg";
-import en from "../../../assets/global/en.svg";
 import { useAuth } from "../../../context/auth-and-perm/AuthProvider";
-import { useLanguageContext } from "../../../context/language";
-import { useIsRTL } from "../../../hooks";
 import { Breadcrumbs } from "../../molecules/Breadcrumbs";
+import Setting from "../../molecules/Setting";
 
-const NavBar = ({
-  setOpenSide,
-  openSide,
-  handleCollapsedSideBar,
-  isSidebarCollapsed,
-}: any) => {
+const NavBar = ({ isSidebarCollapsed }: any) => {
+  const navigate = useNavigate();
   const [dropDown, setDropDown] = useState(false);
+  const { user } = useAuth();
 
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    const savedMode = localStorage.getItem("darkMode");
-    return savedMode === "true";
-  });
-
-  const handleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-
-    if (newMode) {
-      document.body.classList.add("dark");
-    } else {
-      document.body.classList.remove("dark");
-    }
-
-    localStorage.setItem("darkMode", newMode);
-  };
-
-  useEffect(() => {
-    const savedMode: any = localStorage.getItem("darkMode");
-
-    if (!isDarkMode) {
-      document.body.classList.remove("dark");
-    }
-    if (isDarkMode === null) {
-      localStorage.setItem("darkMode", "false");
-    }
-    if (isDarkMode) {
-      setIsDarkMode(savedMode === "true");
-      document.body.classList.add("dark");
-    }
-  }, []);
-
-  const { t } = useTranslation();
   const handleDropDown = () => {
     setDropDown((prevState) => !prevState);
   };
@@ -62,20 +22,11 @@ const NavBar = ({
     setDropDown(false);
   };
 
-  const isRTL = useIsRTL();
-
-  const { changeLang } = useLanguageContext();
-
-  const navigate = useNavigate();
-
   const handleLogOut = () => {
     localStorage.removeItem("user");
     navigate("/login");
     Cookies.remove("token");
   };
-
-  const { user } = useAuth();
-  useEffect(() => {}, [user]);
 
   return (
     <div className="w-100 flex h-16 items-center justify-between p-2">
@@ -84,41 +35,7 @@ const NavBar = ({
       </div>
 
       <div className="me-2 flex  items-center gap-4 relative">
-        {/* <div className="flex dark-light-mode-style">
-          <DarkModeToggle
-            onChange={handleDarkMode}
-            checked={isDarkMode}
-            size={50}
-          />
-        </div> */}
-
-        <button
-          type="button"
-          onClick={(e) =>
-            changeLang(
-              e.currentTarget.firstElementChild?.getAttribute(
-                "data-lang"
-              ) as string
-            )
-          }
-        >
-          {isRTL ? (
-            <img
-              data-lang="en"
-              src={en}
-              className="ms-3 h-[25px] w-[25px] object-contain rounded-[.325rem]"
-              alt="ar"
-            />
-          ) : (
-            <img
-              data-lang="ar"
-              src={ar}
-              className="ms-3 h-[25px] w-[25px] object-contain rounded-[.325rem]"
-              alt="en"
-            />
-          )}
-        </button>
-
+        <Setting />
         <OutsideClickHandler onOutsideClick={handleClickOutside}>
           <div
             className="flex items-center justify-center gap-2 relative cursor-pointer"
@@ -144,7 +61,7 @@ const NavBar = ({
               </a>
             </div>
           </div>
-          {/* drop-down */}
+       
 
           {dropDown && (
             <div

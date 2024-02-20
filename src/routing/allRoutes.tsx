@@ -12,6 +12,8 @@ import Departments from "../pages/masterData/departments";
 import Employees from "../pages/masterData/employees";
 import Clients from "../pages/masterData/clients";
 import Branches from "../pages/masterData/branches";
+import Admins from "../pages/masterData/admins";
+import Roles from "../pages/masterData/Role/Roles";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -49,9 +51,17 @@ export const AllRoutesProvider = () => {
           path="/masterData/clients"
           element={<Clients title={t("Clients")} />}
         />
-          <Route
+        <Route
           path="/masterData/branches"
           element={<Branches title={t("Branches")} />}
+        />
+          <Route
+          path="/masterData/roles"
+          element={<Roles title={t("Roles")} />}
+        />
+        <Route
+          path="/masterData/admins"
+          element={<Admins title={t("Admins")} />}
         />
       </Route>
 

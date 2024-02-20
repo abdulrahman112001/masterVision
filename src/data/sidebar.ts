@@ -82,6 +82,18 @@ export const sideBarItems: MenuItem_TP[] = [
             label: `${"Employees"}`,
             link: "/masterData/employees",
           },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Roles"}`,
+            link: "/masterData/roles",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Admins"}`,
+            link: "/masterData/admins",
+          },
         ],
       },
     ],

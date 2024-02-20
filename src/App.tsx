@@ -1,43 +1,30 @@
 /////////// IMPORTS
 ///
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { useLayoutEffect } from "react"
-import { ToastContainer } from "react-toastify"
-import "react-toastify/dist/ReactToastify.css"
-import { useLoadingOverlay } from "./context/loading"
-import { useIsRTL } from "./hooks/useIsRTL"
-import { AllRoutesProvider } from "./routing/allRoutes"
-
+import { Box, LoadingOverlay, MantineProvider } from "@mantine/core";
+import { ModalsProvider } from "@mantine/modals";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { useLayoutEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Spinner } from "./components/atoms";
+import { useLoadingOverlay } from "./context/loading";
+import { useIsRTL } from "./hooks/useIsRTL";
+import { AllRoutesProvider } from "./routing/allRoutes";
+import '@mantine/core/styles.css';
 ///
 const App = () => {
-  /////////// VARIABLES
-  ///
+  const isRTL = useIsRTL();
 
-  ///
-  /////////// CUSTOM HOOKS
-  ///
-  const isRTL = useIsRTL()
-  ///
-  /////////// STATES
-  ///
-
-  ///
-  /////////// SIDE EFFECTS
-  ///
   useLayoutEffect(() => {
-    document.documentElement.dir = isRTL ? "rtl" : "ltr"
-    document.documentElement.lang = isRTL ? "ar" : "en"
-  }, [])
-  /////////// FUNCTIONS | EVENTS | IF CASES
-  ///
+    document.documentElement.dir = isRTL ? "rtl" : "ltr";
+    document.documentElement.lang = isRTL ? "ar" : "en";
+  }, []);
 
-  ///
-
-  // const { visible, toggle, open, close } = useLoadingOverlay()
+  const { visible, toggle, open, close } = useLoadingOverlay();
 
   return (
     <>
-      {/* <MantineProvider
+      <MantineProvider
         withGlobalStyles
         withNormalizeCSS
         // emotionCache={isRTL ? rtlCache : undefined}
@@ -51,17 +38,17 @@ const App = () => {
               loader={<Spinner />}
               overlayColor="black"
               overlayOpacity={0.9}
-            /> */}
+            />
             <AllRoutesProvider />
             <ToastContainer rtl={isRTL} />
             <ReactQueryDevtools
               initialIsOpen={false}
               position={"bottom-right"}
             />
-          {/* </Box>
+          </Box>
         </ModalsProvider>
-      </MantineProvider> */}
+      </MantineProvider>
     </>
-  )
-}
-export default App
+  );
+};
+export default App;

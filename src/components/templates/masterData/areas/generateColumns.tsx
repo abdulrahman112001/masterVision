@@ -47,18 +47,17 @@ export const generateColumns = (
     },
     {
       header: `${t("Actions")}`,
-      accessorKey: "actions", // This might be a virtual column not directly mapping to data
+      accessorKey: "actions", 
       cell: (info) => (
         <div className="flex justify-center">
           <DropDown>
-
-          <UpdateCountry
-            refetch={refetch}
-            setModel={setIsModalOpen}
-            info={info}
-            setData={setCountryData}
-          />
-          <DeleteArea refetch={refetch} info={info} />
+            <UpdateCountry
+              refetch={refetch}
+              setModel={setIsModalOpen}
+              info={info}
+              setData={setCountryData}
+            />
+            <DeleteArea refetch={refetch} info={info} />
           </DropDown>
         </div>
       ),

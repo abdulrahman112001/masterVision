@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { IconType } from "react-icons";
-//@ts-ignore
 import { Menu, MenuItem, Sidebar, SubMenu } from "react-pro-sidebar";
-//@ts-ignore
-import { FaBars } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { sideBarItems } from "../../../data/sidebar";
-console.log("🚀 ~ sideBarItems:", sideBarItems[0].id);
 import { useIsRTL } from "../../../hooks/useIsRTL";
 import ArrowSideBar_IC from "../../atoms/icons/ArrowSideBar";
 import Logo from "../../atoms/icons/Logo";
 
-interface MenuItemType {
-  id: string;
-  heading?: string;
-  label: string;
-  icon: IconType;
-  link?: string;
-  items?: MenuItemType[];
-}
-
-interface OpenMenusType {
-  [key: string]: boolean;
-}
-
 interface SideBarProps {
-  isSidebarCollapsed: boolean;
-  handleClickItem: () => void;
+  collapsed: boolean;
+  setCollapsed: any;
 }
 
 const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
@@ -49,7 +31,6 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
     }
   };
   const [selectedItem, setSelectedItem] = useState(sideBarItems[0]?.id);
-  console.log("🚀 ~ selectedItem:", selectedItem);
 
   const generateItem = (Item: any) => {
     if (Item?.heading) {
@@ -66,11 +47,10 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
         label={t(Item.label)}
         icon={<Item.icon size={15} />}
       >
-        {Item.items.map((innerItem) => generateItem(innerItem))}
+        {Item.items.map((innerItem: any) => generateItem(innerItem))}
       </SubMenu>
     ) : (
       <>
-        {/* <Tooltip label={t(Item?.label)} > */}
         <MenuItem
           className={
             location.pathname === Item.link
@@ -89,7 +69,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
       </>
     );
   };
-  const handleSelectItem = (id) => {
+  const handleSelectItem = (id: React.SetStateAction<string>) => {
     setSelectedItem(id);
   };
   return (
@@ -104,20 +84,24 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
           <div className="flex justify-center pt-[3rem] ">
             <Logo />
           </div>
-          <Menu iconShape="square">
+
+          <Menu
+            //@ts-ignore
+            iconShape="square"
+          >
             {sideBarItems.map((item) => (
               <MenuItem
                 key={item.id}
                 icon={<item.icon size={30} />}
                 className={selectedItem === item.id ? "active-item-class" : ""}
-                onClick={() => handleSelectItem(item.id)} // تحديث الحالة عند النقر
+                onClick={() => handleSelectItem(item.id)}
               />
             ))}
           </Menu>
         </Sidebar>
       </div>
       <div
-        className={`absolute z-[9] left-[-15px] bottom-[80px] bg-mainBlue w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
+        className={`absolute z-[9] ltr:right-[-15px] rtl:left-[-15px] bottom-[80px] bg-mainBlue w-[40px] py-[5px] rounded-md m-auto flex justify-center ${
           !collapsed
             ? " flex flex-row items-center "
             : "w-[40px] flex justify-center"
@@ -141,28 +125,30 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
           {sideBarItems
             .filter((item) => item.id === selectedItem)
             .flatMap((item) => item.items)
-            .map((Item) => (
+            .map((Item: any) => (
               <>
-                  {Item?.heading && (
-                <div className="mt-[20px] mx-[35px] h-[40px] flex items-center ">
+                {Item?.heading && (
+                  <div className="mt-[20px] mx-[35px] h-[40px] flex items-center ">
                     <h1 className="text-[#7E8299] text-[0.9rem]  ">
                       {t(Item?.heading)}
                     </h1>
-                </div>
-                  )}
+                  </div>
+                )}
                 <SubMenu
                   key={Item.id}
                   label={t(Item.label)}
                   icon={<Item.icon size={30} />}
                 >
-                  {Item.items.map((innerItem) => (
+                  {Item.items.map((innerItem: any) => (
                     <MenuItem
                       key={innerItem.id}
                       icon={<innerItem.icon size={30} />}
-                      active={location?.pathname === Item.link}
+                      active={location?.pathname === innerItem.link}
                       onClick={(e) => goTo(e, innerItem.link)}
                       className="px-3"
                     >
+                 
+
                       {t(innerItem.label)}
                     </MenuItem>
                   ))}

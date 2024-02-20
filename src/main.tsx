@@ -7,10 +7,9 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { Loading } from './components/organisms/Loading/Loading';
 import { AuthProvider } from './context/auth-and-perm/AuthProvider';
-import { LanguageContextProvider } from './context/language';
 import { LoadingContextProvider } from './context/loading';
-import './query.css';
 import './index.css';
+import './query.css';
 export const queryClient = new QueryClient({
   defaultOptions: {
     queries: { refetchOnWindowFocus: false },
@@ -19,8 +18,7 @@ export const queryClient = new QueryClient({
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <QueryClientProvider client={queryClient}>
-    {/* <LoadingContextProvider> */}
-      <LanguageContextProvider>
+    <LoadingContextProvider>
         <BrowserRouter>
           <AuthProvider>
             <HelmetProvider>
@@ -32,7 +30,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
             </HelmetProvider>
           </AuthProvider>
         </BrowserRouter>
-      </LanguageContextProvider>
-    {/* </LoadingContextProvider> */}
+    </LoadingContextProvider>
   </QueryClientProvider>
 );

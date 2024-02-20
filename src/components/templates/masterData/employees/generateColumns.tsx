@@ -25,13 +25,13 @@ export const generateColumns = (
       cell: (info) => <span>{indexTable(info.row.index, page)}</span>,
     },
     {
-      header: `${t("Name Arabic")}`,
-      accessorKey: "name_ar",
+      header: `${t("Name")}`,
+      accessorKey: "name",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("Name English")}`,
-      accessorKey: "name_en",
+      header: `${t("department name")}`,
+      accessorKey: "department_name",
       cell: (info) => info.renderValue(),
     },
     {

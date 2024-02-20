@@ -12,16 +12,18 @@ export const Delete = ({
   ...props
 }: DeleteProps_TP) => {
   return (
-    <div className="flex items-center justify-between cursor-pointer mt-3" onClick={action}>
+    <div
+      className="flex items-center justify-between cursor-pointer mt-3"
+      onClick={action}
+    >
       <div>
         <AiFillDelete
-          size={"25"}
+          size={"20"}
           className={` fill-red-500   cursor-pointer  ${className}`}
-          
           {...props}
         />
       </div>
-      <div>{t("Delete")}</div>
+      <div className="text-[14px]"> {t("Delete")}</div>
     </div>
   );
 };

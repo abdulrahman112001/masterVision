@@ -8,24 +8,25 @@ import { AddButton } from "../../../molecules/AddButton";
 import { ModalTemplate } from "../../../molecules/ModalTemplate";
 import Paginate from "../../../molecules/table/Paginate";
 import { Table } from "../../../organisms/tantable/Table";
-import AddCountry from "./AddCountry";
-import { AllCountriesAPI_TP } from "./Types&Validation";
 import { generateColumns } from "./generateColumns";
+import { AllRolesAPI_TP } from "./Types&Validation";
+import AddRole from "./AddRole";
 
-function MainCountries() {
+function MainRoles() {
   const [page, setPage] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [pagePagination, setPagePagination] = useState(pagePaginate);
-  const [countryData, setCountryData] = useState({});
+  const [MainData, setMainData] = useState({});
   const isRTL = useIsRTL();
+
   const queryParams = {
     page: page,
     paginate: pagePagination,
   };
   const searchParams = new URLSearchParams(queryParams as any);
-  const endpoint = `countries?${searchParams.toString()}`;
+  const endpoint = `master-data/roles?${searchParams.toString()}`;
   const { data, refetch, isSuccess, isFetching, isLoading } =
-    useFetch<AllCountriesAPI_TP>({
+    useFetch<AllRolesAPI_TP>({
       endpoint: endpoint,
       queryKey: [endpoint],
       onSuccess: () => {
@@ -35,8 +36,8 @@ function MainCountries() {
     });
 
   const columns = useMemo(
-    () => generateColumns(page, refetch, setIsModalOpen, setCountryData),
-    [page, isRTL]
+    () => generateColumns(page, refetch, setIsModalOpen, setMainData),
+    [page , isRTL]
   );
   const handlePageChange = (selectedPage: number) => {
     setPage(selectedPage);
@@ -48,7 +49,7 @@ function MainCountries() {
           <AddButton
             action={() => {
               setIsModalOpen(true);
-              setCountryData({});
+              setMainData({});
             }}
             addLabel={`${t("Add")}`}
           />
@@ -60,11 +61,7 @@ function MainCountries() {
           setIsModalOpen(false);
         }}
       >
-        <AddCountry
-          refetch={refetch}
-          update={countryData}
-          data={data?.data?.data}
-        />
+        <AddRole refetch={refetch} update={MainData} data={data?.data?.data} />
       </ModalTemplate>
 
       <Table
@@ -89,4 +86,4 @@ function MainCountries() {
   );
 }
 
-export default MainCountries;
+export default MainRoles;

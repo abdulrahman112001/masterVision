@@ -2,6 +2,9 @@ import { useFormikContext } from "formik";
 import { t } from "i18next";
 import { BaseInputField, InnerFormLayout, Radio } from "../../../molecules";
 import { AllEmployeesTable_TP } from "./Types&Validation";
+import SelectDepartments from "../../../molecules/Select/SelectDepartments";
+import SelectRole from "../../../molecules/Select/SelectRole";
+import SelectBranches from "../../../molecules/Select/SelectBranches";
 
 function EmployeesFormMainData(update: any) {
   const { setFieldValue, values } = useFormikContext<AllEmployeesTable_TP>();
@@ -11,18 +14,16 @@ function EmployeesFormMainData(update: any) {
         // customStyle="Form-inside-Container"
         showpopuptitle={true}
         title={
-          Object.entries(update?.update).length
-            ? `${t("Edit Department")}`
-            : `${t("Add Department")}`
+          Object.entries(update?.update).length ? `${t("Edit")}` : `${t("Add")}`
         }
         scroll={true}
       >
         <BaseInputField
           id="name.ar"
-          label={`${t("Name Arabic")}`}
-          name="name_ar"
+          label={`${t("Name")}`}
+          name="name"
           type="text"
-          placeholder={`${t("Name Arabic")}`}
+          placeholder={`${t("Name")}`}
           labelProps={{ className: "mb-1 " }}
           className=" mb-3"
           required
@@ -30,14 +31,40 @@ function EmployeesFormMainData(update: any) {
 
         <BaseInputField
           id="name.en"
-          label={`${t("Name English")}`}
-          name="name_en"
-          type="text"
-          placeholder={`${t("Name English")}`}
+          label={`${t("email")}`}
+          name="email"
+          type="email"
+          placeholder={`${t("email")}`}
           labelProps={{ className: "mb-1 " }}
           className="mb-3"
           required
         />
+        <BaseInputField
+          id="password"
+          label={`${t("Password")}`}
+          name="password"
+          type="password"
+          placeholder={`${t("Password")}`}
+          labelProps={{ className: "mb-1 " }}
+          className="mb-3"
+          required
+        />
+        <BaseInputField
+          id="password"
+          label={`${t("password confirmation")}`}
+          name="password_confirmation"
+          type="password"
+          placeholder={`${t("password confirmation")}`}
+          labelProps={{ className: "mb-1 " }}
+          className="mb-3"
+          required
+        />
+        <SelectDepartments
+          name="department_id"
+          label={`${t("department name")}`}
+        />
+        <SelectRole name="role_ids" label={`${t("Permission Name")}`} />
+        <SelectBranches name="branch_id" label={`${t("Branch name")}`} />
 
         <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
           <label>{t("Activation Status")}</label>

@@ -1,3 +1,4 @@
+import { useDisclosure } from "@mantine/hooks";
 import { createContext, useContext } from "react";
 
 interface LoadingContextProviderProps {
@@ -17,11 +18,11 @@ const LoadingContext = createContext<LoadingContextType>(
 export const LoadingContextProvider = ({
   children,
 }: LoadingContextProviderProps) => {
-  // const [visible, { toggle, open, close }] = useDisclosure(false);
+  const [visible, { toggle, open, close }] = useDisclosure(false);
 
   return (
     <LoadingContext.Provider value={{ open, close }}>
-      {/* {children} */}
+      {children}
     </LoadingContext.Provider>
   );
 };

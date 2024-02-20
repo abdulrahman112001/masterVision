@@ -75,6 +75,17 @@
   "Name Branch Ar":"اسم الفرع بالعربي",
   "Name Branch En":"اسم الفرع بالانجليزي",
   "area name":"اسم المنطقة",
-  "mobile":"رقم الهاتف"
+  "mobile":"رقم الهاتف",
+  "loading":"جاري التحميل",
+  "nothing":"لايوجد بيانات",
+  "Admins":"المدراء",
+  "Name":"الاسم",
+  "Roles":"الادوار",
+  "Edit Role":"تعديل الصلاحية",
+  "Add Role":"اضافة صلاحية",
+  "Permission Name":"اسم الصلاحية",
+  "Permissions":"الصلاحيات",
+  "department name":"اسم الادارة"
+
 
 }
