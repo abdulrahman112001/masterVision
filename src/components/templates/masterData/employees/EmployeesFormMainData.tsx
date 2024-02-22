@@ -5,6 +5,9 @@ import { AllEmployeesTable_TP } from "./Types&Validation";
 import SelectDepartments from "../../../molecules/Select/SelectDepartments";
 import SelectRole from "../../../molecules/Select/SelectRole";
 import SelectBranches from "../../../molecules/Select/SelectBranches";
+import AddAdditionalDataEmployee from "./MobileEmployee";
+import MobileEmployee from "./MobileEmployee";
+import AddressEmployee from "./AddressEmployee";
 
 function EmployeesFormMainData(update: any) {
   const { setFieldValue, values } = useFormikContext<AllEmployeesTable_TP>();
@@ -63,7 +66,11 @@ function EmployeesFormMainData(update: any) {
           name="department_id"
           label={`${t("department name")}`}
         />
-        <SelectRole name="role_ids" label={`${t("Permission Name")}`} />
+        <SelectRole
+          name="role_id"
+          label={`${t("Permission Name")}`}
+          placeholder={`${t("Permission Name")}`}
+        />
         <SelectBranches name="branch_id" label={`${t("Branch name")}`} />
 
         <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
@@ -89,6 +96,14 @@ function EmployeesFormMainData(update: any) {
               }}
             />
           </div>
+        </div>
+        <div className="col-span-4">
+          <h3 className="mb-2">{t("mobile")}:</h3>
+          <MobileEmployee />
+        </div>
+        <div className="col-span-4">
+          <h3 className="mb-2">{t("addresses")}:</h3>
+          <AddressEmployee />
         </div>
       </InnerFormLayout>
     </div>

@@ -5,44 +5,25 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import {
-  AllEmployeesTable_TP,
-  initialValue_Tp,
-  validationSchema,
-} from "./Types&Validation";
-import EmployeesFormMainData from "./EmployeesFormMainData";
+import SupplierFormMainData from "./SupplierFormMainData";
+import { AllRolesTable_TP, initialValue_Tp } from "./Types&Validation";
 
-type AddEmployees_TP = {
+type AddSupplier_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddEmployees({ refetch, update }: AddEmployees_TP) {
+function AddSupplier({ refetch, update }: AddSupplier_TP) {
   const initialValues: initialValue_Tp = {
+    status: +update?.status || 1,
     name: update?.name || "",
-    email: update?.email || "",
-    password: update?.password || "",
-    password_confirmation: update?.password_confirmation || "",
-    department_id: update?.department || "",
-    branch_id: update?.branch_id || "",
-    role_id: update?.role.length ?  update?.role?.map((item: { id: string }) => item?.id) : [],
-    status: update?.status ? +update?.status : 1,
-    mobiles: [
-      {
-        item: "",
-        main: "",
-      },
-    ],
-    addresses: [
-      {
-        item: "",
-        main: "",
-      },
+    additional_data: update?.additional_data || [
+      { key_ar: "", key_en: "", value_ar: "", value_en: "", is_default: 0 },
     ],
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/employees"],
-    endpoint: `master-data/employees`,
+    mutationKey: ["master-data/suppliers"],
+    endpoint: `master-data/suppliers`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -53,8 +34,8 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/employees"],
-    endpoint: `master-data/employees/${update?.id}`,
+    mutationKey: ["master-data/suppliers"],
+    endpoint: `master-data/suppliers/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -65,14 +46,26 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllEmployeesTable_TP) => {
+  const handleSubmit = (values: AllRolesTable_TP) => {
+    const additionalData = values?.additional_data?.map((item) => ({
+      key: {
+        ar: item.key_ar,
+        en: item.key_en,
+      },
+      value: {
+        ar: item.value_ar,
+        en: item.value_en,
+      },
+      ...item,
+    }));
+    const finalOut = { additional_data: additionalData };
+
     if (Object.entries(update).length) {
-      PostUpdate({ ...values, _method: "PUT" });
+      PostUpdate({ ...values, ...finalOut, _method: "PUT" });
     } else {
-      mutate({ ...values });
+      mutate({ ...values, ...finalOut });
     }
   };
-
   return (
     <>
       <Formik
@@ -94,7 +87,7 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
                 </Button>
               }
             >
-              <EmployeesFormMainData update={update} />
+              <SupplierFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -104,4 +97,4 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
   );
 }
 
-export default AddEmployees;
+export default AddSupplier;

@@ -64,17 +64,24 @@ function AddClients({ refetch, update }: AddClients_TP) {
     const customFields = values.custom_fields.map((item) => ({
       "name[ar]": item?.name_ar,
       "name[en]": item?.name_en,
-      custom_field_data: item?.custom_field_data?.map((subItem: { name_ar: any; name_en: any; value_ar: any; value_en: any; }) => ({
-        key: {
-          ar: subItem.name_ar,
-          en: subItem.name_en,
-        },
-        value: {
-          ar: subItem.value_ar,
-          en: subItem.value_en,
-        },
-        ...subItem,
-      })),
+      custom_field_data: item?.custom_field_data?.map(
+        (subItem: {
+          name_ar: any;
+          name_en: any;
+          value_ar: any;
+          value_en: any;
+        }) => ({
+          key: {
+            ar: subItem.name_ar,
+            en: subItem.name_en,
+          },
+          value: {
+            ar: subItem.value_ar,
+            en: subItem.value_en,
+          },
+          ...subItem,
+        })
+      ),
 
       ...item,
     }));
@@ -90,7 +97,7 @@ function AddClients({ refetch, update }: AddClients_TP) {
         ...customFields,
       },
     };
-    console.log("🚀 ~ handleSubmit ~ finalOutput:", finalOutput)
+    console.log("🚀 ~ handleSubmit ~ finalOutput:", finalOutput);
     const updateValue = {
       ...finalOutput,
       _method: "PUT",

@@ -10,11 +10,17 @@ import Logo from "../../atoms/icons/Logo";
 interface SideBarProps {
   collapsed: boolean;
   setCollapsed: any;
+  toggled: any;
+  setToggled?: any;
 }
 
-const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
+const SideBar: React.FC<SideBarProps> = ({
+  collapsed,
+  setCollapsed,
+  setToggled,
+  toggled,
+}) => {
   const navigate = useNavigate();
-
   const { t } = useTranslation();
   const location = useLocation();
   const isRTL = useIsRTL();
@@ -72,6 +78,7 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
   const handleSelectItem = (id: React.SetStateAction<string>) => {
     setSelectedItem(id);
   };
+
   return (
     <div className="flex relative">
       <div className="sidebarOne">
@@ -80,6 +87,8 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
           collapsed={true}
           width="265px"
           collapsedWidth="100px"
+          customBreakPoint="991px"
+          toggled={toggled}
         >
           <div className="flex justify-center pt-[3rem] ">
             <Logo />
@@ -117,9 +126,13 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
       <Sidebar
         rtl={isRTL}
         collapsed={collapsed}
-        width="265px"
+        // width={ toggled ?  "265px ": broken ? "0" :"265px"}
         collapsedWidth="0"
         className=""
+        customBreakPoint="991px"
+        // onBreakPoint={setBroken}
+        toggled={toggled}
+        style={{ boxShadow: "-20px 1px 64px -75px" }}
       >
         <Menu>
           {sideBarItems
@@ -139,16 +152,18 @@ const SideBar: React.FC<SideBarProps> = ({ collapsed, setCollapsed }) => {
                   label={t(Item.label)}
                   icon={<Item.icon size={30} />}
                 >
-                  {Item.items.map((innerItem: any) => (
+                  {Item?.items?.map((innerItem: any) => (
                     <MenuItem
                       key={innerItem.id}
                       icon={<innerItem.icon size={30} />}
                       active={location?.pathname === innerItem.link}
-                      onClick={(e) => goTo(e, innerItem.link)}
+                      onClick={(e) => {
+                        goTo(e, innerItem.link);
+                        setCollapsed(false);
+                        setToggled(false);
+                      }}
                       className="px-3"
                     >
-                 
-
                       {t(innerItem.label)}
                     </MenuItem>
                   ))}

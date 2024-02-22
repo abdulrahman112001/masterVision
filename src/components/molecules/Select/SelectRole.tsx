@@ -23,7 +23,6 @@ export default function SelectRole({
     endpoint: "master-data/roles?active=1",
     onSuccess(data) {},
   });
-  console.log("🚀 ~ data:", data);
   const { values } = useFormikContext<any>();
   const initialFormattedOptions = values[name]?.map((id: any) => {
     const option = data?.data?.data?.find((option: any) => option.id === id);

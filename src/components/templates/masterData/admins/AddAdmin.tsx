@@ -14,13 +14,14 @@ type AddAdmin_TP = {
   data: any;
 };
 function AddAdmin({ refetch, update }: AddAdmin_TP) {
+  console.log("🚀 ~ AddAdmin ~ update:", update)
   const initialValues: initialValue_Tp = {
     status: +update?.status || 1,
     name: update?.name || "",
     email: update?.email || "",
     password: update ? null : "",
     password_confirmation: update ? null : "",
-    role_ids: update ? [] : [],
+    role_id: update.role.length ? update.role.map((item:{id:string})=>item.id) : [],
   };
   const { mutate, isLoading } = useMutate({
     mutationKey: ["master-data/users"],

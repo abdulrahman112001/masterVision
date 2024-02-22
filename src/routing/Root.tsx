@@ -1,5 +1,7 @@
+import { useDisclosure } from "@mantine/hooks";
 import { t } from "i18next";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+//@ts-ignore
 import OutsideClickHandler from "react-outside-click-handler";
 import { useNavigate } from "react-router";
 import { Outlet } from "react-router-dom";
@@ -9,37 +11,15 @@ import SideBar from "../components/organisms/Sidebar/Sidebar";
 import { useAuth } from "../context/auth-and-perm/AuthProvider";
 
 export const Root = () => {
-  const { login, user } = useAuth();
-  const [openSide, setOpenSide] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const { user } = useAuth();
   const navigate = useNavigate();
-  const [showSignupState, setShowSignupState] = useState(false);
-  const [isSidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
+  const [toggled, setToggled] = useState(false);
+  const [opened, { toggle } ] = useDisclosure();
+
   const handleClickOutside = () => {
-    document.body.removeAttribute("drawer-aside-bar");
-    setOpenSide(false);
-  };
-
-  useEffect(() => {
-    if (user) {
-      // navigate('/');
-      setShowSignupState(false);
-    } else setShowSignupState(true);
-  }, [user]);
-
-  useEffect(() => {
-    setShowOverlay(openSide);
-  }, [openSide]);
-
-  const handleCollapsedSideBar = () => {
-    setSidebarCollapsed(!isSidebarCollapsed);
-
-    if (!isSidebarCollapsed) {
-      document.body.setAttribute("sidebar-collapsed", "true");
-    } else {
-      document.body.removeAttribute("sidebar-collapsed");
-    }
+    // setCollapsed(false);
+    setToggled(false);
   };
 
   if (!!user) {
@@ -48,9 +28,10 @@ export const Root = () => {
         <OutsideClickHandler onOutsideClick={handleClickOutside}>
           <div className=" ">
             <SideBar
-              handleClickItem={handleClickOutside}
               setCollapsed={setCollapsed}
               collapsed={collapsed}
+              toggled={toggled}
+              setToggled={setToggled}
             />
           </div>
         </OutsideClickHandler>
@@ -62,13 +43,15 @@ export const Root = () => {
         >
           <nav className="col-start-1 col-end-3 row-start-1 row-end-2 bg-white dark:bg-dark-tertiary dark:text-dark-textWhite">
             <NavBar
-              setOpenSide={setOpenSide}
-              openSide={openSide}
-              handleCollapsedSideBar={handleCollapsedSideBar}
-              isSidebarCollapsed={isSidebarCollapsed}
+           
+              // toggle={toggle}
+              toggled={toggled}
+              setToggled={setToggled}
+              opened={opened}
+              isSidebarCollapsed={collapsed}
             />
           </nav>
-          <div className="mt-[45px] px-10 mr-10">
+          <div className="mt-[45px] px-5  ">
             <Outlet />
           </div>
         </main>

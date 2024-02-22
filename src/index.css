@@ -225,7 +225,7 @@ div {
 
 
 .main-page.collapsed-sidebar {
-  width: calc(100% - 70px) !important;
+  width: calc(100% - 100px) !important;
 }
 
 .ps-submenu-content {
@@ -242,7 +242,7 @@ div {
 }
 
 [dir='rtl'] .main-page.collapsed-sidebar {
-  right: 70px !important;
+  right: 100px !important;
 }
 
 [dir='ltr'] .main-page {

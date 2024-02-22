@@ -36,6 +36,13 @@ export const sideBarItems: MenuItem_TP[] = [
           {
             id: crypto.randomUUID(),
             icon: BsDash,
+            label: `${"Activity Logs"}`,
+            
+            link: "/masterData/activity-logs",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
             label: `${"Countries"}`,
             
             link: "/masterData/countries",
@@ -93,6 +100,18 @@ export const sideBarItems: MenuItem_TP[] = [
             icon: BsDash,
             label: `${"Admins"}`,
             link: "/masterData/admins",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Suppliers"}`,
+            link: "/masterData/supplier",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Settings"}`,
+            link: "/masterData/settings",
           },
         ],
       },

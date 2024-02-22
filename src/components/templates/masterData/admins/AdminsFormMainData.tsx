@@ -21,7 +21,7 @@ function AdminsFormMainData(update: any) {
       >
         <div className="w-11/12 sm:flex flex-col md:grid grid-cols-3  gap-1 my-4">
           <SelectRole
-            name="role_ids"
+            name="role_id"
             label={`${t("Roles")}`}
             placeholder={`${t("Roles")}`}
           />

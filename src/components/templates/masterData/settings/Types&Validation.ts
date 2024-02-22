@@ -1,24 +1,26 @@
 import * as Yup from "yup";
 import { requiredTranslation } from "../../../../utils/helpers";
 
-export type AllAdminsTable_TP = {
+export type AllSettingTable_TP = {
   id?: string;
   name: string;
   status: number;
-  email: string;
+  name_ar?: string;
+  name_en?: string;
 };
 export type initialValue_Tp = {
   id?: string;
   name: string;
-  email: string;
+  name_ar: string;
+  name_en: string;
   password?: string | null;
   password_confirmation?: string | null;
   status: number;
-  role_id: string[];
+  permission_ids: string[];
 };
-export type AllAdminsAPI_TP = {
+export type AllSettingAPI_TP = {
   data: {
-    data: AllAdminsTable_TP[];
+    data: AllSettingTable_TP[];
     total: number;
     currentPage: number;
     lastPage: number;

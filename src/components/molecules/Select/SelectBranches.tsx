@@ -17,7 +17,6 @@ export default function SelectBranches({
     queryKey: ["master-data/branches"],
     endpoint: `master-data/branches?prePage=-1`,
   });
-  console.log("🚀 ~ data:", data);
   const { values, setFieldValue } = useFormikContext<any>();
 
   const dataOptions = data?.data?.data?.map((item: any) => ({

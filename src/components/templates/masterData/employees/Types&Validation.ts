@@ -8,8 +8,16 @@ export type AllEmployeesTable_TP = {
   status: number;
 };
 export type initialValue_Tp = {
-  name_en?: string;
-  name_ar?: string;
+  name: string;
+  email?: string;
+  password?: string;
+  password_confirmation?: string;
+  department_id?: string;
+  branch_id?: string;
+  role_id?: string[];
+  mobiles: [{ item: string; main: string }];
+  addresses: [{ item: string; main: string }];
+
   id?: string;
   status: number;
 };
@@ -26,5 +34,4 @@ export const validationSchema = () =>
     name_ar: Yup.string().trim().required(requiredTranslation),
     name_en: Yup.string().trim().required(requiredTranslation),
     status: Yup.string().trim().required(requiredTranslation),
-
   });

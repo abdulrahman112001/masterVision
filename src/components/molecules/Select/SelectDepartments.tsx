@@ -31,7 +31,7 @@ export default function SelectDepartments({
     /*     <div className="w-11/12 text-right mt-6">
      */ <div className="text-right text-xs">
       <Select
-        placeholder={`${t("choose country")}`}
+        placeholder={`${t("choose")}`}
         label={label}
         id="optionStatus"
         name={name}

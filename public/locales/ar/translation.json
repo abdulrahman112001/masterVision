@@ -85,7 +85,23 @@
   "Add Role":"اضافة صلاحية",
   "Permission Name":"اسم الصلاحية",
   "Permissions":"الصلاحيات",
-  "department name":"اسم الادارة"
+  "department name":"اسم الادارة",
+  "Branch name":"اسم الفرع",
+  "choose":"اختر",
+  "addresses":"العنوان",
+  "Suppliers":"الموردين",
+  "Activity Logs":"سجلات النشاط",
+  "Activity logs":"سجلات النشاط",
+  "event":"الحدث",
+  "description":"التفاصيل",
+  "log name":"اسم السجل",
+  "New Data":"البيانات الجديده",
+  "Old Data":"البيانات القديمة",
+  "New Name":"الاسم الجديد",
+  "New Email":"البريد الالكتروني الجديد",
+  "old Name":"الاسم السابق",
+  "old Email":"البريد الالكتروني السابق",
+  "Settings":"الاعدادات"
 
 
 }

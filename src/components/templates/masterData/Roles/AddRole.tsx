@@ -8,12 +8,12 @@ import { OuterFormLayout } from "../../../molecules";
 import { AllRolesTable_TP, initialValue_Tp } from "./Types&Validation";
 import RolesFormMainData from "./RolesFormMainData";
 
-type AddAdmin_TP = {
+type AddRole_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddRole({ refetch, update }: AddAdmin_TP) {
+function AddRole({ refetch, update }: AddRole_TP) {
   const initialValues: initialValue_Tp = {
     status: +update?.status || 1,
     name: update?.name || "",

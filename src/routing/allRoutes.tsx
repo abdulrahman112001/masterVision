@@ -14,6 +14,9 @@ import Clients from "../pages/masterData/clients";
 import Branches from "../pages/masterData/branches";
 import Admins from "../pages/masterData/admins";
 import Roles from "../pages/masterData/Role/Roles";
+import Suppliers from "../pages/masterData/suppliers";
+import ActivityLogs from "../pages/masterData/activityLogs";
+import Settings from "../pages/masterData/settings";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -23,6 +26,10 @@ export const AllRoutesProvider = () => {
         <Route path="*" element={<ErrorPage />} />
         <Route index element={<Home title={t("home")} />} />
         {/* master Data */}
+        <Route
+          path="/masterData/activity-logs"
+          element={<ActivityLogs title={t("Activity Logs")} />}
+        />
         <Route
           path="/masterData/countries"
           element={<Countries title={t("Countries")} />}
@@ -55,13 +62,21 @@ export const AllRoutesProvider = () => {
           path="/masterData/branches"
           element={<Branches title={t("Branches")} />}
         />
-          <Route
+        <Route
           path="/masterData/roles"
           element={<Roles title={t("Roles")} />}
         />
         <Route
           path="/masterData/admins"
           element={<Admins title={t("Admins")} />}
+        />
+        <Route
+          path="/masterData/supplier"
+          element={<Suppliers title={t("Suppliers")} />}
+        />
+         <Route
+          path="/masterData/settings"
+          element={<Settings title={t("Settings")} />}
         />
       </Route>
 

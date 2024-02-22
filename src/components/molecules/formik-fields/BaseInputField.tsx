@@ -35,9 +35,9 @@ export const BaseInputField = ({
   type: "text" | "number" | "password" | "email" | "file" | "textarea";
 } & React.InputHTMLAttributes<HTMLInputElement>) => {
   const { setFieldValue, setFieldTouched, errors, touched, values } =
-  useFormikContext<{
-    [key: string]: any;
-  }>();
+    useFormikContext<{
+      [key: string]: any;
+    }>();
   const [typePass, setTypePass] = useState("password");
   const changeable = () => {
     typePass === "password" ? setTypePass("text") : setTypePass("password");
@@ -85,7 +85,7 @@ export const BaseInputField = ({
                 id={id}
                 {...props}
                 // value={fieldValue}
-                value={ props.value || values[name]}
+                value={props.value || values[name]}
                 error={touched[name] && !!errors[name]}
                 autoComplete="off"
                 onBlur={() => {

@@ -1,24 +1,32 @@
 import * as Yup from "yup";
 import { requiredTranslation } from "../../../../utils/helpers";
 
-export type AllAdminsTable_TP = {
+export type AllActivityTable_TP = {
+  name_en?: string;
+  name_ar?: string;
   id?: string;
-  name: string;
-  status: number;
-  email: string;
+  email:string
+  event:string
+  new:{
+    email:string
+  }
+  old:{
+    email:string
+    name:string
+  }
+
 };
 export type initialValue_Tp = {
+  name_en?: string;
+  name_ar?: string;
   id?: string;
-  name: string;
-  email: string;
-  password?: string | null;
-  password_confirmation?: string | null;
   status: number;
-  role_id: string[];
+  city_id:string
+ 
 };
-export type AllAdminsAPI_TP = {
+export type AllActivityAPI_TP = {
   data: {
-    data: AllAdminsTable_TP[];
+    data: AllActivityTable_TP[];
     total: number;
     currentPage: number;
     lastPage: number;
@@ -29,4 +37,7 @@ export const validationSchema = () =>
     name_ar: Yup.string().trim().required(requiredTranslation),
     name_en: Yup.string().trim().required(requiredTranslation),
     status: Yup.string().trim().required(requiredTranslation),
+    city_id: Yup.string().trim().required(requiredTranslation),
+
+
   });

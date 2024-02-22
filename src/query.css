@@ -3,10 +3,32 @@
     display: none !important;
   }
 }
+
 @media (max-width: 991px) {
+
   [dir='rtl'] .css-dip3t8,
-  .css-7onajn {
-    transform: translateX(100%);
+  .css-7onajn,
+  .sidebarOne {
+    /* transform: translateX(100%); */
+    /* width: 0; */
+    /* max-width: 0; */
+  }
+
+  .sidebarOne .ps-sidebar-root.ps-toggled.ps-broken {
+    right: 0 !important;
+  }
+
+  .ps-sidebar-root.ps-toggled.ps-broken {
+    right: 98px !important;
+  }
+
+  .ps-sidebar-root.ps-toggled.ps-broken .css-dip3t8 {
+    background-color: white !important;
+  }
+
+  .ps-sidebar-backdrop.css-8i0j0q {
+    background-color: transparent;
+    position: static;
   }
 
   .collapsed-button-sidebar {
@@ -59,13 +81,14 @@
   .upload__image-wrapper {
     width: 50% !important;
   }
+
   .styleing-modal-info {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
 
 @media (min-width:790) {
-  .styleing-modal-info{
+  .styleing-modal-info {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
 }
@@ -90,23 +113,11 @@
     background-color: transparent !important;
   }
 
-  .DateRangePickerHomePage
-    div
-    > div:nth-child(2)
-    > div
-    > div
-    > div
-    > div:first-child {
+  .DateRangePickerHomePage div>div:nth-child(2)>div>div>div>div:first-child {
     display: none !important;
   }
 
-  .DateRangePickerHomePage
-    div
-    > div:nth-child(2)
-    > div
-    > div
-    > div
-    > div:last-child {
+  .DateRangePickerHomePage div>div:nth-child(2)>div>div>div>div:last-child {
     flex-direction: column !important;
   }
 }
@@ -123,6 +134,7 @@
   .upload__image-wrapper {
     width: 100% !important;
   }
+
   .user-info-navbar {
     display: none;
   }
@@ -133,19 +145,15 @@
 }
 
 @media (max-width: 430px) {
-  .DateRangePickerHomePage
-    div
-    > div:nth-child(2)
-    > div
-    > div
-    > div:first-child {
+  .DateRangePickerHomePage div>div:nth-child(2)>div>div>div:first-child {
     order: 3 !important;
   }
-  .DateRangePickerHomePage div > div:nth-child(2) > div > div {
+
+  .DateRangePickerHomePage div>div:nth-child(2)>div>div {
     flex-direction: column !important;
   }
 
-  .DateRangePickerHomePage div > div:nth-child(2) > div > div:nth-child(3) {
+  .DateRangePickerHomePage div>div:nth-child(2)>div>div:nth-child(3) {
     order: 1 !important;
   }
 }
