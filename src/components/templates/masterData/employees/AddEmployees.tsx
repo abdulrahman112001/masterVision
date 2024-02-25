@@ -11,6 +11,7 @@ import {
   validationSchema,
 } from "./Types&Validation";
 import EmployeesFormMainData from "./EmployeesFormMainData";
+import { convertToDynamicShape } from "../../../../utils/helpers";
 
 type AddEmployees_TP = {
   refetch: () => void;
@@ -18,29 +19,19 @@ type AddEmployees_TP = {
   data: any;
 };
 function AddEmployees({ refetch, update }: AddEmployees_TP) {
-  console.log("🚀 ~ AddEmployees ~ update:", update)
   const initialValues: initialValue_Tp = {
     name: update?.name || "",
     email: update?.email || "",
-    password: update?.password || "",
-    password_confirmation: update?.password_confirmation || "",
+    password: update ? null : "",
+    password_confirmation: "",
     department_id: update?.department || "",
-    branch_id: update?.branch_id || "",
+    branch_id: update?.branch || "",
     role_id: update?.role?.length
       ? update?.role?.map((item: { id: string }) => item?.id)
       : [],
     status: update?.status ? +update?.status : 1,
-    mobiles: [
-      {
-        item: "",
-        main: "",
-      },
-    ],
-    addresses: [
-      {
-        item: "",
-        main: "",
-      },
+    additional_data: update?.additional_data || [
+      { key_ar: "", key_en: "", value_ar: "", value_en: "" }, // Default structure for one item
     ],
   };
   const { mutate, isLoading } = useMutate({
@@ -68,11 +59,28 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllEmployeesTable_TP) => {
-    if (Object.entries(update).length) {
-      PostUpdate({ ...values, _method: "PUT" });
+  const handleSubmit = (values: initialValue_Tp) => {
+    const transformedData = convertToDynamicShape(values?.additional_data);
+    let finalOutput = {
+      ...values,
+      type: "individual",
+      additional_data: {
+        ...transformedData,
+      },
+    };
+    if (values.password && values.password.trim() !== "") {
+      finalOutput = { ...finalOutput, password: values.password };
     } else {
-      mutate({ ...values });
+      delete finalOutput.password;
+    }
+    const updateValue = {
+      ...finalOutput,
+      _method: "PUT",
+    };
+    if (Object.entries(update).length) {
+      PostUpdate(updateValue);
+    } else {
+      mutate(finalOutput);
     }
   };
 

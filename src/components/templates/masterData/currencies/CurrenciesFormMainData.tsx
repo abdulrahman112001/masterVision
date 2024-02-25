@@ -59,6 +59,16 @@ function CurrenciesFormMainData(update: any) {
           className="mb-3"
           required
         />
+          <BaseInputField
+          id="name.en"
+          label={`${t("base")}`}
+          name="base"
+          type="text"
+          placeholder={`${t("base")}`}
+          labelProps={{ className: "mb-1 " }}
+          className="mb-3"
+          required
+        />
 
         <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
           <label>{t("Activation Status")}</label>

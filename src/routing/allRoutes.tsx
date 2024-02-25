@@ -17,6 +17,8 @@ import Roles from "../pages/masterData/Role/Roles";
 import Suppliers from "../pages/masterData/suppliers";
 import ActivityLogs from "../pages/masterData/activityLogs";
 import Settings from "../pages/masterData/settings";
+import CoastCenter from "../pages/accounting/coastCenter";
+import ChartType from "../pages/accounting/chartType";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -74,9 +76,18 @@ export const AllRoutesProvider = () => {
           path="/masterData/supplier"
           element={<Suppliers title={t("Suppliers")} />}
         />
-         <Route
+        <Route
           path="/masterData/settings"
           element={<Settings title={t("Settings")} />}
+        />
+        {/* accounting */}
+        <Route
+          path="/account/coast-center"
+          element={<CoastCenter title={t("Coast Center")} />}
+        />
+          <Route
+          path="/account/chart-type"
+          element={<ChartType title={t("chart type")} />}
         />
       </Route>
 

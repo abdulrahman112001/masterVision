@@ -115,6 +115,25 @@ export const sideBarItems: MenuItem_TP[] = [
           },
         ],
       },
+      {
+        id: crypto.randomUUID(),
+        icon: BiSolidHome,
+        label: `${"Accounting"}`,
+        items:[
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Cost Center"}`,
+            link: "/account/coast-center",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Chart Type"}`,
+            link: "/account/chart-type",
+          },
+        ]
+      }
     ],
   },
   {

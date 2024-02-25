@@ -24,6 +24,8 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
     name_en: update?.name_en || "",
     symbol: update?.symbol || "",
     rate: update?.rate || "",
+    base: update?.base || "",
+
   };
   const { mutate, isLoading } = useMutate({
     mutationKey: ["master-data/currencies"],

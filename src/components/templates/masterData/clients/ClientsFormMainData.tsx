@@ -15,8 +15,8 @@ function ClientsFormMainData(update: any) {
         showpopuptitle={true}
         title={
           Object.entries(update?.update).length
-            ? `${t("Edit CLient")}`
-            : `${t("Add CLient")}`
+            ? `${t("Edit")}`
+            : `${t("Add")}`
         }
         scroll={true}
       >
@@ -61,16 +61,6 @@ function ClientsFormMainData(update: any) {
             className="mb-3 text-xs"
             required
           />
-        </div>
-        <div className="col-span-12">
-          <h1 className="text-start">{t("Additional Data")}</h1>
-          <AddAdditionalDataClient />
-        </div>
-        <div className="col-span-12 mt-5 w-full px-[50px]">
-          <h1 className="text-start">{t("custom  field")}</h1>
-          <AddCustomField />
-        </div>
-
         <div className="flex gap-4  text-right mantine-radio-style flex-col w-11/12 ">
           <label>{t("Activation Status")}</label>
           <div className="flex gap-5  mantine-radio-style">
@@ -95,6 +85,17 @@ function ClientsFormMainData(update: any) {
             />
           </div>
         </div>
+        </div>
+        <div className="col-span-12">
+          <h1 className="text-start">{t("Additional Data")}</h1>
+          <AddAdditionalDataClient />
+        </div>
+        {/* <div className="col-span-12 mt-5 w-full px-[50px]">
+          <h1 className="text-start">{t("custom  field")}</h1>
+          <AddCustomField />
+        </div> */}
+
+      
       </InnerFormLayout>
     </div>
   );

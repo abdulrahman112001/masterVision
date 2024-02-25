@@ -1,33 +1,31 @@
 import { Form, Formik } from "formik";
 import { t } from "i18next";
 import { useMutate } from "../../../../hooks";
-import { convertToDynamicShape } from "../../../../utils/helpers";
 import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import ClientsFormMainData from "./ClientsFormMainData";
-import { AllClientsTable_TP, initialValue_Tp } from "./Types&Validation";
+import AdminsFormMainData from "./CoastsFormMainData";
+import { AllCoastsTable_TP, initialValue_Tp } from "./Types&Validation";
+import CoastsFormMainData from "./CoastsFormMainData";
 
-type AddClients_TP = {
+type AddCoast_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddClients({ refetch, update }: AddClients_TP) {
-  console.log("🚀 ~ AddClients ~ update:", update);
+function AddCoast({ refetch, update }: AddCoast_TP) {
   const initialValues: initialValue_Tp = {
+    name_ar: update?.name_ar || "",
+    name_en: update?.name_en || "",
+    description: update?.description || "",
     status: +update?.status || 1,
-    name: update?.name || "",
-    email: update?.email || "",
-    password: update ? null : "",
-    additional_data: update?.additional_data || [
-      { key_ar: "", key_en: "", value_ar: "", value_en: "" }, // Default structure for one item
-    ],
+    start_date: update?.start_date || new Date(),
+    due_date: update?.due_date || new Date(),
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/clients"],
-    endpoint: `master-data/clients`,
+    mutationKey: ["accounting/costcenter"],
+    endpoint: `accounting/costcenter`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -38,8 +36,8 @@ function AddClients({ refetch, update }: AddClients_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/clients"],
-    endpoint: `master-data/clients/${update?.id}`,
+    mutationKey: ["accounting/costcenter"],
+    endpoint: `accounting/costcenter/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -50,33 +48,21 @@ function AddClients({ refetch, update }: AddClients_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: initialValue_Tp) => {
-    const transformedData = convertToDynamicShape(values?.additional_data);
-    let finalOutput = {
-      ...values,
-      type: "individual",
-      additional_data: {
-        ...transformedData,
-      },
+  const handleSubmit = (values: AllCoastsTable_TP) => {
+    const finalOutput = {
+      "name[ar]": values.name_ar,
+      "name[en]": values.name_en,
     };
-
- 
-    if (values.password && values.password.trim() !== "") {
-      finalOutput = { ...finalOutput, password: values.password };
-    } else {
-      delete finalOutput.password;
-    }
-    const updateValue = {
-      ...finalOutput,
-      _method: "PUT",
-    };
+    const valuesToSubmit = { ...values };
+    delete valuesToSubmit.name_ar;
+    delete valuesToSubmit.name_en;
+    const submissionData = { ...valuesToSubmit, ...finalOutput };
     if (Object.entries(update).length) {
-      PostUpdate(updateValue);
+      PostUpdate({ ...submissionData, _method: "PUT" });
     } else {
-      mutate(finalOutput);
+      mutate(submissionData);
     }
   };
-
   return (
     <>
       <Formik
@@ -98,7 +84,7 @@ function AddClients({ refetch, update }: AddClients_TP) {
                 </Button>
               }
             >
-              <ClientsFormMainData update={update} />
+              <CoastsFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -108,4 +94,4 @@ function AddClients({ refetch, update }: AddClients_TP) {
   );
 }
 
-export default AddClients;
+export default AddCoast;

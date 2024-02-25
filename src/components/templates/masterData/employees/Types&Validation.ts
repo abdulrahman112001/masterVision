@@ -15,8 +15,12 @@ export type initialValue_Tp = {
   department_id?: string;
   branch_id?: string;
   role_id?: string[];
-  mobiles: [{ item: string; main: string }];
-  addresses: [{ item: string; main: string }];
+  additional_data: [
+    key_ar: string,
+    key_en: string,
+    value_ar: string,
+    value_en: string
+  ];
 
   id?: string;
   status: number;

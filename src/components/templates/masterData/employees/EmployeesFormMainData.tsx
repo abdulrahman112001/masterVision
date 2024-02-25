@@ -1,13 +1,11 @@
 import { useFormikContext } from "formik";
 import { t } from "i18next";
 import { BaseInputField, InnerFormLayout, Radio } from "../../../molecules";
-import { AllEmployeesTable_TP } from "./Types&Validation";
+import SelectBranches from "../../../molecules/Select/SelectBranches";
 import SelectDepartments from "../../../molecules/Select/SelectDepartments";
 import SelectRole from "../../../molecules/Select/SelectRole";
-import SelectBranches from "../../../molecules/Select/SelectBranches";
-import AddAdditionalDataEmployee from "./MobileEmployee";
-import MobileEmployee from "./MobileEmployee";
-import AddressEmployee from "./AddressEmployee";
+import { AllEmployeesTable_TP } from "./Types&Validation";
+import AdditionalDataEmployee from "./AdditionalDataEmployee";
 
 function EmployeesFormMainData(update: any) {
   const { setFieldValue, values } = useFormikContext<AllEmployeesTable_TP>();
@@ -98,12 +96,7 @@ function EmployeesFormMainData(update: any) {
           </div>
         </div>
         <div className="col-span-4">
-          <h3 className="mb-2">{t("mobile")}:</h3>
-          <MobileEmployee />
-        </div>
-        <div className="col-span-4">
-          <h3 className="mb-2">{t("addresses")}:</h3>
-          <AddressEmployee />
+          <AdditionalDataEmployee />
         </div>
       </InnerFormLayout>
     </div>
