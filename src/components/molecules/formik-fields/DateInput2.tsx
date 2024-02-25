@@ -123,7 +123,7 @@ export default function DateInput2({
           name={name}
           dateFormat="dd/MM/yyyy"
           isClearable={true}
-          value={values[name] ? values[name].toLocaleDateString() : new Date()}
+          value={new Date('01-05-2022')}
           // placeholderText={placeholder}
         />
       </div>

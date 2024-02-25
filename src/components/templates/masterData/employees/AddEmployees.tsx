@@ -18,6 +18,7 @@ type AddEmployees_TP = {
   data: any;
 };
 function AddEmployees({ refetch, update }: AddEmployees_TP) {
+  console.log("🚀 ~ AddEmployees ~ update:", update)
   const initialValues: initialValue_Tp = {
     name: update?.name || "",
     email: update?.email || "",
@@ -25,7 +26,9 @@ function AddEmployees({ refetch, update }: AddEmployees_TP) {
     password_confirmation: update?.password_confirmation || "",
     department_id: update?.department || "",
     branch_id: update?.branch_id || "",
-    role_id: update?.role.length ?  update?.role?.map((item: { id: string }) => item?.id) : [],
+    role_id: update?.role?.length
+      ? update?.role?.map((item: { id: string }) => item?.id)
+      : [],
     status: update?.status ? +update?.status : 1,
     mobiles: [
       {

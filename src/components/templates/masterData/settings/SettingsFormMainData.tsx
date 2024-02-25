@@ -1,19 +1,23 @@
 import { useFormikContext } from "formik";
-import { InnerFormLayout } from "../../../molecules";
-import BaseInputRepeater from "../../../molecules/formik-fields/BaseInputRepeater";
-import { AllRolesTable_TP } from "../Roles/Types&Validation";
-import UploadImg from "../../../molecules/UploadImg";
-import { DropFile } from "../../../molecules/files/DropFile";
-import DateInput2 from "../../../molecules/formik-fields/DateInput2";
-import { Button, Label } from "../../../atoms";
-import { FaCheck } from "react-icons/fa";
-import { notify } from "../../../../utils/toast";
-import { useMutate } from "../../../../hooks";
 import { useState } from "react";
+import { FaCheck } from "react-icons/fa";
+import { useMutate } from "../../../../hooks";
+import { notify } from "../../../../utils/toast";
+import { Button, Label } from "../../../atoms";
+import { InnerFormLayout } from "../../../molecules";
+import { DropFile } from "../../../molecules/files/DropFile";
+import BaseInputRepeater from "../../../molecules/formik-fields/BaseInputRepeater";
+import DateInput2 from "../../../molecules/formik-fields/DateInput2";
+import { AllRolesTable_TP } from "../Roles/Types&Validation";
+import { formatDate } from "../../../../utils/date";
+import { DateInput } from "@mantine/dates";
+import DateInputMantine from "../../../molecules/formik-fields/DateInputMantine";
 
 function SettingsFormMainData(data: any) {
   const [idInput, setIdInput] = useState("");
-  const { setFieldValue, values } = useFormikContext<AllRolesTable_TP>();
+  const { setFieldValue, values, initialValues } =
+    useFormikContext<AllRolesTable_TP>();
+  console.log("🚀 ~ SettingsFormMainData ~ values:", values);
   const [loadingButtonId, setLoadingButtonId] = useState<string | null>(null);
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
     mutationKey: [`master-data/settings/${idInput}`],
@@ -104,7 +108,7 @@ function SettingsFormMainData(data: any) {
               ) : item.type == "date" ? (
                 <div className="grid grid-cols-12 items-center  w-full ">
                   <div className="col-span-11">
-                    <DateInput2 name={`${item?.id}`} label={item?.key} />
+                    <DateInputMantine name={item?.id} label={item?.key} />
                   </div>
                   <div className="flex items-center mt-7 mx-1">
                     <Button
@@ -113,10 +117,11 @@ function SettingsFormMainData(data: any) {
                       action={() => {
                         setLoadingButtonId(item.id);
                         setIdInput(item?.id);
-                        const formData = new FormData();
-                        formData.append("value", values[item.id]);
-                        formData.append("_method", "PUT");
-                        PostUpdate(formData);
+                        const finalOut = {
+                          value: (values[item.id]),
+                          _method: "PUT",
+                        };
+                        PostUpdate(finalOut);
                       }}
                     >
                       {loadingButtonId !== item.id && <FaCheck />}

@@ -28,7 +28,7 @@ function AddressEmployee() {
                     name={`addresses[${index}].item`}
                     type="text"
                     placeholder={`${t("addresses")}`}
-                    value={item.key_ar}
+                    value={item.item}
                     onChange={(e: { target: { value: string } }) =>
                       setFieldValue(`addresses[${index}].item`, e.target.value)
                     }

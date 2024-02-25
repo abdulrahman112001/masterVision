@@ -1,19 +1,17 @@
 import { Form, Formik } from "formik";
+import { useState } from "react";
 import { useFetch } from "../../../../hooks";
+import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
+import { OuterFormLayout } from "../../../molecules";
 import SettingsFormMainData from "./SettingsFormMainData";
 import {
   AllSettingAPI_TP,
-  AllSettingTable_TP,
-  initialValue_Tp,
+  AllSettingTable_TP
 } from "./Types&Validation";
-import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
-import { OuterFormLayout } from "../../../molecules";
-import { Button } from "../../../atoms";
-import { t } from "i18next";
-import { useState } from "react";
+import { Loading } from "../../../organisms/Loading/Loading";
 
 function MainSettings() {
-  const [initialValues, setInitialValues] = useState({});
+  const [initialValues, setInitialValues] = useState(null);
   const endpoint = `master-data/settings`;
   const { data } = useFetch<AllSettingAPI_TP>({
     endpoint: endpoint,
@@ -44,7 +42,9 @@ function MainSettings() {
     const submissionData = { ...valuesToSubmit, ...finalOutput };
     // PostUpdate({ ...submissionData, _method: "PUT" });
   };
-
+  if (!initialValues) {
+    return <Loading/> 
+  }
   return (
     <div>
       <Formik

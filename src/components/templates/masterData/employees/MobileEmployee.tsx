@@ -28,7 +28,7 @@ function MobileEmployee() {
                     name={`mobiles[${index}].item`}
                     type="text"
                     placeholder={`${t("mobile")}`}
-                    value={item.key_ar}
+                    value={item.item}
                     onChange={(e: { target: { value: string } }) =>
                       setFieldValue(`mobiles[${index}].item`, e.target.value)
                     }
