@@ -4,18 +4,18 @@ import { Select } from "..";
 import { useFormikContext } from "formik";
 import { OptionType } from "../../../utils/helpers";
 
-type SelectChartClass_tp = {
+type SelectCurrencies_tp = {
   name: string;
   label?: string;
   placeholder?: string;
 };
-export default function SelectChartClass({ name, label }: SelectChartClass_tp) {
-  const isRTL = useIsRTL();
+export default function SelectCurrencies({ name, label }: SelectCurrencies_tp) {
   const { data, isLoading, failureReason } = useFetch<any>({
-    queryKey: ["accounting/chartclass"],
-    endpoint: `accounting/chartclass?prePage=-1`,
+    queryKey: ["master-data/currencies"],
+    endpoint: `master-data/currencies?prePage=-1`,
   });
   const { values, setFieldValue } = useFormikContext<any>();
+  const isRTL = useIsRTL();
 
   const dataOptions = data?.data?.data?.map((item: any) => ({
     value: item.id,

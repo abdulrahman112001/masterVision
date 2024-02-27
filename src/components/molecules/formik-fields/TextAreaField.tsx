@@ -21,7 +21,7 @@ export const TextAreaField = ({
       [key: string]: any;
     }>();
   return (
-    <div className='col-span-1'>
+    <div className='col-span-1 text-start'>
       <Label htmlFor={id} required={required}>
         {label}
       </Label>

@@ -59,7 +59,7 @@ function CurrenciesFormMainData(update: any) {
           className="mb-3"
           required
         />
-          <BaseInputField
+          {/* <BaseInputField
           id="name.en"
           label={`${t("base")}`}
           name="base"
@@ -68,8 +68,31 @@ function CurrenciesFormMainData(update: any) {
           labelProps={{ className: "mb-1 " }}
           className="mb-3"
           required
-        />
+        /> */}
+  <div className="flex gap-4  text-right mantine-radio-style flex-col w-11/12 ">
+            <label>{t("Base")}</label>
+            <div className="flex gap-5  mantine-radio-style">
+              <Radio
+                checked={values?.base === 1}
+                label={`${t("Default")}`}
+                id="status"
+                name="base"
+                onChange={() => {
+                  setFieldValue("base", 1);
+                }}
+              />
 
+              <Radio
+                label={`${t("Not default")}`}
+                checked={values?.base === 0}
+                id="status"
+                name="base"
+                onChange={() => {
+                  setFieldValue("base", 0);
+                }}
+              />
+            </div>
+          </div>
         <div className="flex gap-4  mantine-radio-style flex-col w-full text-start px-2">
           <label>{t("Activation Status")}</label>
           <div className="flex gap-5  mantine-radio-style">
@@ -94,6 +117,7 @@ function CurrenciesFormMainData(update: any) {
             />
           </div>
         </div>
+      
       </InnerFormLayout>
     </div>
   );

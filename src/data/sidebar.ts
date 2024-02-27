@@ -132,6 +132,36 @@ export const sideBarItems: MenuItem_TP[] = [
             label: `${"Chart Type"}`,
             link: "/account/chart-type",
           },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Chart Account"}`,
+            link: "/account/chart-account",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Entities"}`,
+            link: "/account/entities",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Payment Method"}`,
+            link: "/account/payment-method",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Safes"}`,
+            link: "/account/safes",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Custodians"}`,
+            link: "/account/custodians",
+          },
         ]
       }
     ],

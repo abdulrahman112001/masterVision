@@ -4,16 +4,16 @@ import { Select } from "..";
 import { useFormikContext } from "formik";
 import { OptionType } from "../../../utils/helpers";
 
-type SelectChartClass_tp = {
+type SelectChartType_tp = {
   name: string;
   label?: string;
   placeholder?: string;
 };
-export default function SelectChartClass({ name, label }: SelectChartClass_tp) {
+export default function SelectChartType({ name, label }: SelectChartType_tp) {
   const isRTL = useIsRTL();
   const { data, isLoading, failureReason } = useFetch<any>({
-    queryKey: ["accounting/chartclass"],
-    endpoint: `accounting/chartclass?prePage=-1`,
+    queryKey: ["accounting/charttype"],
+    endpoint: `accounting/charttype?prePage=-1`,
   });
   const { values, setFieldValue } = useFormikContext<any>();
 

@@ -5,30 +5,25 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import CountriesFormMainData from "./CurrenciesFormMainData";
-import {
-  AllCurrencyTable_TP,
-  initialValue_Tp,
-  validationSchema,
-} from "./Types&Validation";
+import MainData from "./MainData";
+import { Table_TP, initialValue_Tp } from "./Types&Validation";
 
-type AddCurrency_TP = {
+type Add_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddCurrency({ refetch, update }: AddCurrency_TP) {
+function Add({ refetch, update }: Add_TP) {
   const initialValues: initialValue_Tp = {
-    status: update?.status ? +update?.status : 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    symbol: update?.symbol || "",
-    rate: update?.rate || "",
-    base: update?.base ? +update?.base : 0,
+    payment_type: update?.payment_type || "cash",
+    status: +update?.status || 1,
+
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/currencies"],
-    endpoint: `master-data/currencies`,
+    mutationKey: ["accounting/safes"],
+    endpoint: `accounting/safes`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -39,8 +34,8 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/currencies"],
-    endpoint: `master-data/currencies/${update?.id}`,
+    mutationKey: ["accounting/safes"],
+    endpoint: `accounting/safes/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -51,7 +46,7 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllCurrencyTable_TP) => {
+  const handleSubmit = (values: Table_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
@@ -66,12 +61,11 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
       mutate(submissionData);
     }
   };
-
   return (
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         onSubmit={(values: any) => handleSubmit(values)}
       >
         <Form>
@@ -88,7 +82,7 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
                 </Button>
               }
             >
-              <CountriesFormMainData update={update} />
+              <MainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -98,4 +92,4 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
   );
 }
 
-export default AddCurrency;
+export default Add;

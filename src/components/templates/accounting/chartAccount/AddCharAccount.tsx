@@ -5,30 +5,24 @@ import { notify } from "../../../../utils/toast";
 import { HandleBackErrors } from "../../../../utils/utils-components/HandleBackErrors";
 import { Button } from "../../../atoms";
 import { OuterFormLayout } from "../../../molecules";
-import CountriesFormMainData from "./CurrenciesFormMainData";
-import {
-  AllCurrencyTable_TP,
-  initialValue_Tp,
-  validationSchema,
-} from "./Types&Validation";
+import ChartClassFormMainData from "./ChartAccountFormMainData";
+import { AllChartsTable_TP, initialValue_Tp } from "./Types&Validation";
 
-type AddCurrency_TP = {
+type AddCharAccount_TP = {
   refetch: () => void;
   update: any;
   data: any;
 };
-function AddCurrency({ refetch, update }: AddCurrency_TP) {
+function AddCharAccount({ refetch, update }: AddCharAccount_TP) {
   const initialValues: initialValue_Tp = {
-    status: update?.status ? +update?.status : 1,
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    symbol: update?.symbol || "",
-    rate: update?.rate || "",
-    base: update?.base ? +update?.base : 0,
+    type_id: update?.type_id || "",
+    status: +update?.status || 1,
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["master-data/currencies"],
-    endpoint: `master-data/currencies`,
+    mutationKey: ["accounting/chartaccount"],
+    endpoint: `accounting/chartaccount`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -39,8 +33,8 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["master-data/currencies"],
-    endpoint: `master-data/currencies/${update?.id}`,
+    mutationKey: ["accounting/chartaccount"],
+    endpoint: `accounting/chartaccount/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -51,7 +45,7 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
     formData: true,
   });
 
-  const handleSubmit = (values: AllCurrencyTable_TP) => {
+  const handleSubmit = (values: AllChartsTable_TP) => {
     const finalOutput = {
       "name[ar]": values.name_ar,
       "name[en]": values.name_en,
@@ -66,12 +60,11 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
       mutate(submissionData);
     }
   };
-
   return (
     <>
       <Formik
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        // validationSchema={validationSchema}
         onSubmit={(values: any) => handleSubmit(values)}
       >
         <Form>
@@ -88,7 +81,7 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
                 </Button>
               }
             >
-              <CountriesFormMainData update={update} />
+              <ChartClassFormMainData update={update} />
             </OuterFormLayout>
           </HandleBackErrors>
         </Form>
@@ -98,4 +91,4 @@ function AddCurrency({ refetch, update }: AddCurrency_TP) {
   );
 }
 
-export default AddCurrency;
+export default AddCharAccount;

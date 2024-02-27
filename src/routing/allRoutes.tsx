@@ -19,6 +19,12 @@ import ActivityLogs from "../pages/masterData/activityLogs";
 import Settings from "../pages/masterData/settings";
 import CoastCenter from "../pages/accounting/coastCenter";
 import ChartType from "../pages/accounting/chartType";
+import ChartAccount from "../pages/accounting/chartAcount";
+import MainEntities from "../components/templates/accounting/entities/MainEntities";
+import Entities from "../pages/accounting/entities";
+import PaymentMethod from "../pages/accounting/paymentMethod";
+import Safes from "../pages/accounting/safes";
+import Custodians from "../pages/accounting/custodians";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -85,9 +91,26 @@ export const AllRoutesProvider = () => {
           path="/account/coast-center"
           element={<CoastCenter title={t("Coast Center")} />}
         />
-          <Route
+        <Route
           path="/account/chart-type"
           element={<ChartType title={t("chart type")} />}
+        />
+        <Route
+          path="/account/chart-account"
+          element={<ChartAccount title={t("chart account")} />}
+        />
+        <Route
+          path="/account/entities"
+          element={<Entities title={t("entities")} />}
+        />
+        <Route
+          path="/account/payment-method"
+          element={<PaymentMethod title={t("Payment Method")} />}
+        />
+        <Route path="/account/safes" element={<Safes title={t("Safes")} />} />
+        <Route
+          path="/account/custodians"
+          element={<Custodians title={t("custodians")} />}
         />
       </Route>
 

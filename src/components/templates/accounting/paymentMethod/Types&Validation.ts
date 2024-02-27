@@ -1,26 +1,23 @@
 import * as Yup from "yup";
 import { requiredTranslation } from "../../../../utils/helpers";
 
-export type AllCurrencyTable_TP = {
-  name_en?: string;
-  name_ar?: string;
+export type Table_TP = {
   id?: string;
+  name_ar?: string;
+  name_en?: string;
+  payment_type:string
   status: number;
-  symbol: string;
-  rate: string;
 };
 export type initialValue_Tp = {
-  name_en?: string;
-  name_ar?: string;
   id?: string;
+  name_ar: string;
+  name_en: string;
+  payment_type?: string;
   status: number;
-  symbol: string;
-  rate: string;
-  base: number;
 };
-export type AllCurrencyAPI_TP = {
+export type API_TP = {
   data: {
-    data: AllCurrencyTable_TP[];
+    data: Table_TP[];
     total: number;
     currentPage: number;
     lastPage: number;
@@ -31,6 +28,4 @@ export const validationSchema = () =>
     name_ar: Yup.string().trim().required(requiredTranslation),
     name_en: Yup.string().trim().required(requiredTranslation),
     status: Yup.string().trim().required(requiredTranslation),
-    symbol: Yup.string().trim().required(requiredTranslation),
-    rate: Yup.string().trim().required(requiredTranslation),
   });
