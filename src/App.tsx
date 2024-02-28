@@ -11,7 +11,7 @@ import { useLoadingOverlay } from "./context/loading";
 import { useIsRTL } from "./hooks/useIsRTL";
 import { AllRoutesProvider } from "./routing/allRoutes";
 import '@mantine/core/styles.css';
-///
+
 const App = () => {
   const isRTL = useIsRTL();
 
