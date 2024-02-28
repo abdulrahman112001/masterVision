@@ -17,16 +17,15 @@ function Add({ refetch, update }: Add_TP) {
   const initialValues: initialValue_Tp = {
     name_ar: update?.name_ar || "",
     name_en: update?.name_en || "",
-    account_number: update?.account_number || "",
-    currency_id: update?.currency?.id || "",
-    chart_account_origin_id: update?.chart_account_origin?.id || "",
-    chart_account_expense_id: update?.chart_account_expense?.id || "",
-    payment_type: update?.payment_type || "cash",
+    index: update?.index || "",
+    value: update?.value || "",
+    type: update?.type || 1,
     status: +update?.status || 1,
+
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["accounting/safes"],
-    endpoint: `accounting/safes`,
+    mutationKey: ["accounting/taxes"],
+    endpoint: `accounting/taxes`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -37,8 +36,8 @@ function Add({ refetch, update }: Add_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["accounting/safes"],
-    endpoint: `accounting/safes/${update?.id}`,
+    mutationKey: ["accounting/taxes"],
+    endpoint: `accounting/taxes/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");

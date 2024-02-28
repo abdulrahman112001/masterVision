@@ -5,24 +5,17 @@ export type Table_TP = {
   id?: string;
   name_ar?: string;
   name_en?: string;
-  payment_type: string;
+  type:number
   status: number;
 };
 export type initialValue_Tp = {
   id?: string;
   name_ar: string;
   name_en: string;
-  account_number:string
-  payment_type?: string;
-  currency_id: {
-    id: string;
-  };
-  chart_account_expense_id: {
-    id: string;
-  };
-  chart_account_origin_id: {
-    id: string;
-  };
+  index: number;
+  type: number;
+  value: number;
+
   status: number;
 };
 export type API_TP = {

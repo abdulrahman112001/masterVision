@@ -35,28 +35,18 @@ export const generateColumns = (
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("account number")}`,
-      accessorKey: "account_number",
+      header: `${t("type")}`,
+      accessorKey: "type",
+      cell: (info) => <div>{info.row?.original.type == 1 ? "percentage" :"fixed  "}</div>,
+    },
+    {
+      header: `${t("index")}`,
+      accessorKey: "index",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("currency")}`,
-      accessorKey: "currency.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("branch")}`,
-      accessorKey: "branch.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("chart account origin")}`,
-      accessorKey: "chart_account_origin.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("chart account expense")}`,
-      accessorKey: "chart_account_expense.name_ar",
+      header: `${t("value")}`,
+      accessorKey: "value",
       cell: (info) => info.renderValue(),
     },
     {

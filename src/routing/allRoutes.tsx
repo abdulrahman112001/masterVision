@@ -25,6 +25,9 @@ import Entities from "../pages/accounting/entities";
 import PaymentMethod from "../pages/accounting/paymentMethod";
 import Safes from "../pages/accounting/safes";
 import Custodians from "../pages/accounting/custodians";
+import Taxes from "../pages/accounting/taxes";
+import Invoices from "../pages/accounting/invoices";
+import Transactions from "../pages/accounting/transactions";
 
 export const AllRoutesProvider = () => {
   // tail
@@ -111,6 +114,18 @@ export const AllRoutesProvider = () => {
         <Route
           path="/account/custodians"
           element={<Custodians title={t("custodians")} />}
+        />
+         <Route
+          path="/account/taxes"
+          element={<Taxes title={t("taxes")} />}
+        />
+         <Route
+          path="/account/invoices"
+          element={<Invoices title={t("Invoices")} />}
+        />
+         <Route
+          path="/account/transactions"
+          element={<Transactions title={t("Transactions")} />}
         />
       </Route>
 

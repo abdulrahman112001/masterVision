@@ -25,45 +25,27 @@ export const generateColumns = (
       cell: (info) => <span>{indexTable(info.row.index, page)}</span>,
     },
     {
-      header: `${t("Name Arabic")}`,
-      accessorKey: "name_ar",
+      header: `${t("user")}`,
+      accessorKey: "user",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("Name English")}`,
-      accessorKey: "name_en",
+      header: `${t("chart account")}`,
+      accessorKey: "chart_account",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("account number")}`,
-      accessorKey: "account_number",
+      header: `${t("amount")}`,
+      accessorKey: "amount",
       cell: (info) => info.renderValue(),
     },
     {
-      header: `${t("currency")}`,
-      accessorKey: "currency.name_ar",
+      header: `${t("reference")}`,
+      accessorKey: "reference",
       cell: (info) => info.renderValue(),
     },
-    {
-      header: `${t("branch")}`,
-      accessorKey: "branch.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("chart account origin")}`,
-      accessorKey: "chart_account_origin.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("chart account expense")}`,
-      accessorKey: "chart_account_expense.name_ar",
-      cell: (info) => info.renderValue(),
-    },
-    {
-      header: `${t("Active")}`,
-      accessorKey: "status",
-      cell: (info) => <Activate info={info} />,
-    },
+ 
+
     {
       header: `${t("Actions")}`,
       accessorKey: "actions", // This might be a virtual column not directly mapping to data

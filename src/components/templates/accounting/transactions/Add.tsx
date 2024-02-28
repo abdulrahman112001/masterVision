@@ -15,18 +15,17 @@ type Add_TP = {
 };
 function Add({ refetch, update }: Add_TP) {
   const initialValues: initialValue_Tp = {
-    name_ar: update?.name_ar || "",
-    name_en: update?.name_en || "",
-    account_number: update?.account_number || "",
-    currency_id: update?.currency?.id || "",
-    chart_account_origin_id: update?.chart_account_origin?.id || "",
-    chart_account_expense_id: update?.chart_account_expense?.id || "",
-    payment_type: update?.payment_type || "cash",
-    status: +update?.status || 1,
+    chart_account_id: update?.chart_account_id || "",
+    currency_id: update?.currency_id || "",
+    amount: update?.amount || "",
+    cost_center_id: update?.cost_center_id || "",
+    reference: update?.reference || "",
+    notes: update?.notes || "",
+
   };
   const { mutate, isLoading } = useMutate({
-    mutationKey: ["accounting/safes"],
-    endpoint: `accounting/safes`,
+    mutationKey: ["accounting/gl-transactions"],
+    endpoint: `accounting/gl-transactions`,
     onSuccess: () => {
       refetch();
       notify("success");
@@ -37,8 +36,8 @@ function Add({ refetch, update }: Add_TP) {
     formData: true,
   });
   const { mutate: PostUpdate, isLoading: updateLoading } = useMutate({
-    mutationKey: ["accounting/safes"],
-    endpoint: `accounting/safes/${update?.id}`,
+    mutationKey: ["accounting/gl-transactions"],
+    endpoint: `accounting/gl-transactions/${update?.id}`,
     onSuccess: () => {
       refetch();
       notify("success");

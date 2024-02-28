@@ -162,6 +162,24 @@ export const sideBarItems: MenuItem_TP[] = [
             label: `${"Custodians"}`,
             link: "/account/custodians",
           },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Taxes"}`,
+            link: "/account/taxes",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Invoices"}`,
+            link: "/account/invoices",
+          },
+          {
+            id: crypto.randomUUID(),
+            icon: BsDash,
+            label: `${"Transactions"}`,
+            link: "/account/transactions",
+          },
         ]
       }
     ],
