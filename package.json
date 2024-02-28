@@ -1,7 +1,7 @@
 {
   "name": "qurandash",
   "private": true,
-  "homepage": "https://admin.back.qurancourses.technoraft.com/",
+  "homepage": "https://master-back.zeegroupsa.com/api/v1/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

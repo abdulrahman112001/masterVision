@@ -36,7 +36,7 @@ function useFetch<T>({
       "Accept-Language": isRTL ? "ar" : "en",
     },
   };
-  const baseURL = import.meta.env.VITE_BASE_URL;
+  const baseURL = "https://master-back.zeegroupsa.com/api/v1";
 
   const query = useQuery<T>({
     queryKey,
